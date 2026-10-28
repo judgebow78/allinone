@@ -918,7 +918,7 @@
         </div>
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-number">55</div>
+                <div class="stat-number">57</div>
                 <div class="stat-label">Kasus Client</div>
             </div>
             <div class="stat-item">
@@ -961,7 +961,7 @@
 <section id="problems">
     <div class="section-header fade-in">
         <div class="section-tag">Kenali Kendala Client</div>
-        <h2>55 Kasus IT yang Sering Ditemui</h2>
+        <h2>57 Kasus IT yang Sering Ditemui</h2>
         <p>Mulai dari masalah yang dialami pengguna. Daftar ini sengaja menampilkan kendala terlebih dahulu, sebelum membahas fitur yang dapat membantu penanganannya.</p>
     </div>
     <div class="problem-intro">
@@ -998,6 +998,18 @@
             <h3>Pembersihan browser harus dilakukan tanpa menghapus bookmark</h3>
             <p>Dibutuhkan pembersihan data sementara dengan tetap mempertahankan bookmark dan password tersimpan.</p>
             <a class="case-link" href="#map-a-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-a-6">
+            <div class="problem-icon">🌐</div>
+            <h3>Website masih menggunakan informasi DNS lama</h3>
+            <p>Setelah perubahan DNS, komputer client masih menyimpan cache DNS sehingga website dapat mengarah ke alamat yang lama.</p>
+            <a class="case-link" href="#map-a-6">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-a-7">
+            <div class="problem-icon">🌐</div>
+            <h3>Website tidak dapat diakses setelah perubahan DNS</h3>
+            <p>Cache DNS sistem yang belum diperbarui dapat menghambat browser mengakses alamat website yang benar.</p>
+            <a class="case-link" href="#map-a-7">Lihat penanganan <span aria-hidden="true">→</span></a>
         </article>
 <article class="problem-card fade-in" id="case-b-1">
             <div class="problem-icon">🖨️</div>
@@ -1341,6 +1353,20 @@
             <div class="mapping-copy"><h3>Pembersihan browser harus dilakukan tanpa menghapus bookmark</h3>
             <p>Dibutuhkan pembersihan data sementara dengan tetap mempertahankan bookmark dan password tersimpan.</p>
             <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
+            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-a-6">
+            <div class="mapping-number">A06</div>
+            <div class="mapping-copy"><h3>Website masih menggunakan informasi DNS lama</h3>
+            <p>Setelah perubahan DNS, komputer client masih menyimpan cache DNS sehingga website dapat mengarah ke alamat yang lama.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser — Flush DNS sistem menggunakan <code>resolvectl flush-caches</code> atau restart <code>systemd-resolved</code>.</div></div>
+            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-a-7">
+            <div class="mapping-number">A07</div>
+            <div class="mapping-copy"><h3>Website tidak dapat diakses setelah perubahan DNS</h3>
+            <p>Cache DNS sistem yang belum diperbarui dapat menghambat browser mengakses alamat website yang benar.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser — Flush DNS sistem menggunakan <code>resolvectl flush-caches</code> atau restart <code>systemd-resolved</code>.</div></div>
             <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
         </article>
 <article class="mapping-card fade-in" id="map-b-1">
@@ -1706,13 +1732,14 @@
             <span class="feature-letter">A</span>
             <div class="feature-icon"></div>
             <h3>Clear Browser</h3>
-            <p>Bersihkan cache, history, cookies, dan session data dari Firefox & Chrome secara remote. Bookmarks dan password tersimpan aman.</p>
+            <p>Bersihkan cache, history, cookies, dan session data dari Firefox & Chrome secara remote, termasuk flush DNS sistem. Bookmarks dan password tersimpan aman.</p>
             <div class="feature-tags">
                 <span class="tag">Firefox</span>
                 <span class="tag">Chrome</span>
                 <span class="tag">SQLite VACUUM</span>
+                <span class="tag">Flush DNS</span>
             </div>
-            <a class="feature-case-link" href="#case-a-1">Lihat 5 kasus terkait →</a>
+            <a class="feature-case-link" href="#case-a-1">Lihat 7 kasus terkait →</a>
         </div>
 
         <div class="feature-card fade-in" id="feature-b">
