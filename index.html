@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All-in-One IT Support Bot - Kasus Client & Dokumentasi</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --secondary: #ec4899;
+        --accent: #06b6d4;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --dark: #0f172a;
+        --darker: #020617;
+        --card: rgba(30, 41, 59, 0.7);
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: rgba(148, 163, 184, 0.1);
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--darker);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        z-index: -1;
+        animation: bgShift 20s ease-in-out infinite;
+    }
+
+    @keyframes bgShift {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-20px, 20px) scale(1.1); }
+    }
+
+    /* Navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        z-index: 1000;
+        padding: 1rem 0;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+        color: var(--text);
+    }
+
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 2rem 4rem;
+        position: relative;
+    }
+
+    .hero-content {
+        max-width: 900px;
+        animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background: rgba(99, 102, 241, 0.2);
+        border: 1px solid var(--primary);
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+        50% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero h1 span {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+        background: var(--card);
+        color: var(--text);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(51, 65, 85, 0.8);
+        transform: translateY(-3px);
+    }
+
+    /* Stats */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 4rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .stat-item {
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        border-radius: 16px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .stat-label {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+    }
+
+    /* Sections */
+    section {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-tag {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background: rgba(6, 182, 212, 0.15);
+        border: 1px solid var(--accent);
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .section-header h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-header p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    }
+
+    .feature-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .feature-card:nth-child(2) .feature-icon { background: linear-gradient(135deg, var(--secondary), #f97316); }
+    .feature-card:nth-child(3) .feature-icon { background: linear-gradient(135deg, var(--accent), var(--success)); }
+    .feature-card:nth-child(4) .feature-icon { background: linear-gradient(135deg, var(--warning), var(--danger)); }
+    .feature-card:nth-child(5) .feature-icon { background: linear-gradient(135deg, var(--success), var(--accent)); }
+    .feature-card:nth-child(6) .feature-icon { background: linear-gradient(135deg, var(--primary), var(--accent)); }
+    .feature-card:nth-child(7) .feature-icon { background: linear-gradient(135deg, #8b5cf6, var(--secondary)); }
+    .feature-card:nth-child(8) .feature-icon { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+    .feature-card:nth-child(9) .feature-icon { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+    .feature-card:nth-child(10) .feature-icon { background: linear-gradient(135deg, #10b981, #06b6d4); }
+    .feature-card:nth-child(11) .feature-icon { background: linear-gradient(135deg, #6366f1, #ec4899); }
+
+    .feature-letter {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.3rem 0.8rem;
+        background: rgba(99, 102, 241, 0.2);
+        border-radius: 50px;
+        color: var(--primary);
+    }
+
+    .feature-card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tag {
+        padding: 0.3rem 0.8rem;
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 50px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    /* Problems Section */
+    .problems-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .problem-card {
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 2rem;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .problem-card:hover {
+        border-color: var(--warning);
+        transform: translateY(-5px);
+    }
+
+    .problem-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .problem-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+        color: var(--warning);
+    }
+
+    .problem-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .problem-solution {
+        padding: 0.75rem 1rem;
+        background: rgba(16, 185, 129, 0.1);
+        border-left: 3px solid var(--success);
+        border-radius: 8px;
+        font-size: 0.85rem;
+        color: var(--success);
+    }
+
+    .problem-solution strong {
+        color: var(--text);
+    }
+
+    /* Architecture Diagram */
+    .diagram-container {
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 3rem 2rem;
+        overflow-x: auto;
+    }
+
+    .diagram {
+        min-width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .diagram-layer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .diagram-box {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
+        border: 2px solid var(--primary);
+        border-radius: 16px;
+        padding: 1.5rem 2rem;
+        text-align: center;
+        min-width: 200px;
+        transition: all 0.3s;
+        position: relative;
+    }
+
+    .diagram-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+    }
+
+    .diagram-box.user {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(16, 185, 129, 0.2));
+        border-color: var(--accent);
+    }
+
+    .diagram-box.server {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+        border-color: var(--warning);
+    }
+
+    .diagram-box.client {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+        border-color: var(--success);
+    }
+
+    .diagram-box .icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .diagram-box h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .diagram-box p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    .diagram-arrow {
+        font-size: 2rem;
+        color: var(--primary);
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .diagram-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .flow-step {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        text-align: center;
+        flex: 1;
+        min-width: 150px;
+        position: relative;
+    }
+
+    .flow-step .step-num {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .flow-step h5 {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .flow-step p {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    .flow-arrow {
+        color: var(--primary);
+        font-size: 1.5rem;
+    }
+
+    /* How to Use */
+    .steps-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        counter-reset: step;
+    }
+
+    .step-card {
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 2rem;
+        position: relative;
+        counter-increment: step;
+        transition: all 0.3s;
+    }
+
+    .step-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-5px);
+    }
+
+    .step-card::before {
+        content: counter(step);
+        position: absolute;
+        top: -15px;
+        left: 2rem;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.2rem;
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .step-card h3 {
+        margin-top: 1rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+    }
+
+    .step-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+    }
+
+    .step-card code {
+        display: block;
+        background: var(--darker);
+        padding: 0.75rem;
+        border-radius: 8px;
+        font-family: 'Fira Code', monospace;
+        font-size: 0.85rem;
+        color: var(--accent);
+        margin-top: 1rem;
+        border: 1px solid var(--border);
+    }
+
+    /* Tech Stack */
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .tech-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        transition: all 0.3s;
+    }
+
+    .tech-item:hover {
+        border-color: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .tech-item .tech-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .tech-item h4 {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .tech-item p {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+        background: var(--dark);
+        border-top: 1px solid var(--border);
+        padding: 3rem 2rem 2rem;
+        text-align: center;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+    }
+
+    .footer-text {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--dark);
+            flex-direction: column;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+
+        section {
+            padding: 4rem 1.5rem;
+        }
+
+        .hero {
+            padding: 5rem 1.5rem 3rem;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .diagram-container {
+            padding: 2rem 1rem;
+        }
+
+        .flow-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Case-first navigation and accessible case links */
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    section[id] { scroll-margin-top: 82px; }
+    .problem-intro {
+        display:flex; flex-wrap:wrap; gap:.5rem 1rem; align-items:center;
+        padding:1rem 1.25rem; margin:0 0 1.5rem;
+        border:1px solid rgba(6,182,212,.28); border-radius:14px;
+        background:rgba(6,182,212,.08); color:var(--text-muted);
+    }
+    .problem-intro strong { color:var(--accent); }
+    .case-link, .feature-case-link {
+        display:inline-flex; align-items:center; gap:.4rem; margin-top:.65rem;
+        color:#67e8f9; font-weight:700; font-size:.9rem; text-decoration:none;
+    }
+    .case-link:hover, .feature-case-link:hover { color:#a5f3fc; text-decoration:underline; }
+    .mapping-list { display:grid; grid-template-columns:1fr; gap:.8rem; }
+    .mapping-card {
+        display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:1rem;
+        align-items:center; padding:1.2rem 1.4rem; border-radius:16px;
+        border:1px solid var(--border); background:var(--card);
+    }
+    .mapping-number {
+        display:flex; align-items:center; justify-content:center; width:52px; height:52px;
+        border-radius:14px; color:white; font-weight:800;
+        background:linear-gradient(135deg,var(--primary),var(--secondary));
+    }
+    .mapping-copy h3 { font-size:1.05rem; margin-bottom:.25rem; }
+    .mapping-copy p { color:var(--text-muted); font-size:.9rem; margin-bottom:.6rem; }
+    .mapping-card .problem-solution { display:inline-block; }
+    .feature-case-link { padding:.55rem .8rem; border:1px solid rgba(103,232,249,.25); border-radius:10px; }
+    @media(max-width:700px) {
+        .nav-container { padding:0 1rem; }
+        .logo { font-size:1.1rem; }
+        .nav-links { gap:.9rem; }
+        .problem-card, .feature-card { padding:1.4rem; }
+        .mapping-card { grid-template-columns:auto minmax(0,1fr); padding:1rem; }
+        .mapping-card > .case-link { grid-column:2; margin-top:0; }
+        .mapping-number { width:42px; height:42px; font-size:.85rem; }
+    }
+
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">🤖 All-in-One Bot</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#problems">Kasus Client</a></li>
+            <li><a href="#mapping">Pemetaan</a></li>
+            <li><a href="#features">Fitur</a></li>
+            <li><a href="#architecture">Arsitektur</a></li>
+            <li><a href="#howto">Cara Pakai</a></li>
+        </ul>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="badge">✨ Versi 2.0 - PT Salam Pacific Indonesia Lines</div>
+        <h1>All-in-One <span>IT Support Bot</span></h1>
+        <p>Solusi otomatis untuk manajemen dan pemeliharaan IT infrastruktur perusahaan. Kendalikan ratusan komputer client dari satu titik melalui Telegram Bot dengan keamanan tingkat enterprise.</p>
+        <div class="hero-buttons">
+            <a href="#problems" class="btn btn-primary"> Jelajahi Kasus</a>
+            <a href="#architecture" class="btn btn-secondary"> Lihat Arsitektur</a>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">55</div>
+                <div class="stat-label">Kasus Client</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Uptime Monitoring</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">11</div>
+                <div class="stat-label">Fitur Penanganan</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">🔒</div>
+                <div class="stat-label">Secure & Encrypted</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Introduction -->
+<section>
+    <div class="section-header fade-in">
+        <div class="section-tag">Tentang Script</div>
+        <h2>Apa itu All-in-One IT Support Bot?</h2>
+        <p>Script bash otomatisasi yang terintegrasi dengan Telegram Bot API untuk remote management komputer client berbasis Ubuntu/Linux</p>
+    </div>
+    <div class="fade-in" style="background: var(--card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 24px; padding: 3rem;">
+        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+            <strong style="color: var(--text);">All-in-One IT Support Bot</strong> adalah solusi komprehensif yang dirancang khusus untuk tim IT support di lingkungan korporat. Script ini mengubah Telegram menjadi <em>remote command center</em> yang memungkinkan administrator IT untuk melakukan pemeliharaan, diagnosa, dan perbaikan pada komputer client secara jarak jauh — tanpa perlu akses fisik ke setiap mesin.
+        </p>
+        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+            Dengan arsitektur <strong style="color: var(--accent);">Server-Client berbasis SSH</strong>, bot ini dapat mengelola ratusan komputer secara paralel. Setiap fitur dirancang untuk menyelesaikan masalah IT yang paling sering dihadapi di lingkungan kantor, mulai dari pembersihan cache browser yang melambatkan kinerja, hingga diagnosa hardware yang kompleks.
+        </p>
+        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;">
+            Keamanan menjadi prioritas utama dengan sistem <strong style="color: var(--success);">autentikasi berlapis</strong> (password bot + kredensial SSH terpisah), sesi yang expire otomatis dalam 24 jam, dan enkripsi kredensial yang tersimpan aman di server.
+        </p>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="problems">
+    <div class="section-header fade-in">
+        <div class="section-tag">Kenali Kendala Client</div>
+        <h2>55 Kasus IT yang Sering Ditemui</h2>
+        <p>Mulai dari masalah yang dialami pengguna. Daftar ini sengaja menampilkan kendala terlebih dahulu, sebelum membahas fitur yang dapat membantu penanganannya.</p>
+    </div>
+    <div class="problem-intro">
+        <strong>Mulai dari masalahnya.</strong>
+        <span>Pilih kasus untuk melihat pemetaan penanganan pada bagian berikutnya.</span>
+    </div>
+    <div class="problems-container">
+<article class="problem-card fade-in" id="case-a-1">
+            <div class="problem-icon">🌐</div>
+            <h3>Firefox terasa lambat saat membuka banyak tab</h3>
+            <p>Cache browser menumpuk dan halaman terasa lambat saat digunakan.</p>
+            <a class="case-link" href="#map-a-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-a-2">
+            <div class="problem-icon">🌐</div>
+            <h3>Chrome sering menampilkan halaman lama</h3>
+            <p>Cache lokal dapat membuat tampilan situs belum diperbarui.</p>
+            <a class="case-link" href="#map-a-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-a-3">
+            <div class="problem-icon">🌐</div>
+            <h3>Browser sering bermasalah setelah pemakaian lama</h3>
+            <p>Data sementara dan sesi lama dapat mengganggu penggunaan browser.</p>
+            <a class="case-link" href="#map-a-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-a-4">
+            <div class="problem-icon">🌐</div>
+            <h3>Riwayat browsing perlu dibersihkan dari komputer client</h3>
+            <p>Riwayat kunjungan dan data formulir masih tersimpan di profil browser.</p>
+            <a class="case-link" href="#map-a-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-a-5">
+            <div class="problem-icon">🌐</div>
+            <h3>Pembersihan browser harus dilakukan tanpa menghapus bookmark</h3>
+            <p>Dibutuhkan pembersihan data sementara dengan tetap mempertahankan bookmark dan password tersimpan.</p>
+            <a class="case-link" href="#map-a-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-b-1">
+            <div class="problem-icon">🖨️</div>
+            <h3>Dokumen tertahan di antrean printer</h3>
+            <p>Print job tidak selesai dan dokumen berikutnya ikut tertahan.</p>
+            <a class="case-link" href="#map-b-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-b-2">
+            <div class="problem-icon">🖨️</div>
+            <h3>Printer tidak merespons perintah cetak</h3>
+            <p>Layanan antrean cetak mungkin perlu diperiksa dan dimulai ulang.</p>
+            <a class="case-link" href="#map-b-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-b-3">
+            <div class="problem-icon">🖨️</div>
+            <h3>Hasil cetak Epson bergaris atau kurang jelas</h3>
+            <p>Head printer mungkin memerlukan proses pembersihan.</p>
+            <a class="case-link" href="#map-b-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-b-4">
+            <div class="problem-icon">🖨️</div>
+            <h3>Antrean CUPS menumpuk</h3>
+            <p>Spooler cetak memiliki pekerjaan yang gagal atau tertahan.</p>
+            <a class="case-link" href="#map-b-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-b-5">
+            <div class="problem-icon">🖨️</div>
+            <h3>Pengguna tidak bisa mencetak saat pekerjaan mendesak</h3>
+            <p>Masalah antrean atau head printer menghambat proses cetak.</p>
+            <a class="case-link" href="#map-b-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-c-1">
+            <div class="problem-icon">📡</div>
+            <h3>Teknisi tidak mengetahui alamat IP komputer pengguna</h3>
+            <p>Alamat IP target perlu ditemukan pada jaringan.</p>
+            <a class="case-link" href="#map-c-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-c-2">
+            <div class="problem-icon">📡</div>
+            <h3>Sulit menemukan komputer tertentu di jaringan kantor</h3>
+            <p>Pemeriksaan satu per satu memerlukan waktu lama.</p>
+            <a class="case-link" href="#map-c-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-c-3">
+            <div class="problem-icon">📡</div>
+            <h3>Perlu mengetahui host yang sedang aktif</h3>
+            <p>Status host pada rentang jaringan perlu diperiksa.</p>
+            <a class="case-link" href="#map-c-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-c-4">
+            <div class="problem-icon">📡</div>
+            <h3>Nama host komputer tidak diketahui</h3>
+            <p>Informasi hostname membantu mengenali perangkat yang merespons.</p>
+            <a class="case-link" href="#map-c-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-c-5">
+            <div class="problem-icon">📡</div>
+            <h3>Pemeriksaan jaringan harus dilakukan pada beberapa alamat sekaligus</h3>
+            <p>Rentang IP perlu dipindai agar host aktif dapat ditemukan lebih cepat.</p>
+            <a class="case-link" href="#map-c-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-d-1">
+            <div class="problem-icon">⏻</div>
+            <h3>Komputer client perlu di-restart dari jarak jauh</h3>
+            <p>Restart diperlukan tanpa mendatangi lokasi perangkat.</p>
+            <a class="case-link" href="#map-d-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-d-2">
+            <div class="problem-icon">⏻</div>
+            <h3>Komputer perlu dimatikan setelah jam kerja</h3>
+            <p>Perangkat dapat dimatikan secara terencana melalui akses remote.</p>
+            <a class="case-link" href="#map-d-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-d-3">
+            <div class="problem-icon">⏻</div>
+            <h3>Perangkat tidak berada dekat dengan teknisi</h3>
+            <p>Tindakan power jarak jauh dibutuhkan jika koneksi remote masih tersedia.</p>
+            <a class="case-link" href="#map-d-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-d-4">
+            <div class="problem-icon">⏻</div>
+            <h3>Restart dibutuhkan setelah pemeliharaan</h3>
+            <p>Perangkat perlu memulai ulang agar proses pemeliharaan selesai.</p>
+            <a class="case-link" href="#map-d-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-d-5">
+            <div class="problem-icon">⏻</div>
+            <h3>Teknisi perlu memilih tindakan shutdown atau restart dengan cepat</h3>
+            <p>Pilihan tindakan daya harus disesuaikan dengan kondisi komputer.</p>
+            <a class="case-link" href="#map-d-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-e-1">
+            <div class="problem-icon">⚡</div>
+            <h3>Sistem terasa lambat karena cache menumpuk</h3>
+            <p>Cache sistem dan file sementara dapat memakan ruang.</p>
+            <a class="case-link" href="#map-e-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-e-2">
+            <div class="problem-icon">⚡</div>
+            <h3>Ruang penyimpanan berkurang akibat file sementara</h3>
+            <p>File cache yang tidak diperlukan perlu dibersihkan.</p>
+            <a class="case-link" href="#map-e-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-e-3">
+            <div class="problem-icon">⚡</div>
+            <h3>Komputer terasa berat setelah digunakan lama</h3>
+            <p>Pembersihan cache dan optimasi dasar dapat membantu pemeliharaan.</p>
+            <a class="case-link" href="#map-e-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-e-4">
+            <div class="problem-icon">⚡</div>
+            <h3>Penggunaan disk perlu diringankan</h3>
+            <p>File sementara yang aman dibersihkan dapat mengurangi pemakaian ruang.</p>
+            <a class="case-link" href="#map-e-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-e-5">
+            <div class="problem-icon">⚡</div>
+            <h3>Perawatan rutin komputer client memerlukan proses cepat</h3>
+            <p>Optimasi dasar dapat dijalankan secara remote.</p>
+            <a class="case-link" href="#map-e-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-f-1">
+            <div class="problem-icon">📶</div>
+            <h3>Komputer pengguna tidak dapat dijangkau melalui jaringan</h3>
+            <p>Ping membantu memeriksa respons alamat IP.</p>
+            <a class="case-link" href="#map-f-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-f-2">
+            <div class="problem-icon">📶</div>
+            <h3>Koneksi ke satu server terasa putus-putus</h3>
+            <p>Respons ping dapat digunakan untuk pengamatan konektivitas dasar.</p>
+            <a class="case-link" href="#map-f-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-f-3">
+            <div class="problem-icon">📶</div>
+            <h3>Teknisi perlu memeriksa banyak IP dalam satu rentang</h3>
+            <p>Pemantauan ping rentang IP membantu menguji respons host.</p>
+            <a class="case-link" href="#map-f-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-f-4">
+            <div class="problem-icon">📶</div>
+            <h3>Akses remote gagal dan status jaringan belum jelas</h3>
+            <p>Pemeriksaan ping membantu membedakan masalah konektivitas awal.</p>
+            <a class="case-link" href="#map-f-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-f-5">
+            <div class="problem-icon">📶</div>
+            <h3>Perlu mengetahui apakah alamat IP merespons</h3>
+            <p>Ping single IP memberi indikasi host dapat dijangkau.</p>
+            <a class="case-link" href="#map-f-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-g-1">
+            <div class="problem-icon">🐦</div>
+            <h3>Thunderbird berjalan lambat</h3>
+            <p>Cache dan file sementara aplikasi email mungkin menumpuk.</p>
+            <a class="case-link" href="#map-g-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-g-2">
+            <div class="problem-icon">🐦</div>
+            <h3>Thunderbird sering crash</h3>
+            <p>Data sementara atau kondisi profil perlu diperiksa saat troubleshooting.</p>
+            <a class="case-link" href="#map-g-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-g-3">
+            <div class="problem-icon">🐦</div>
+            <h3>Aplikasi email terasa berat setelah lama digunakan</h3>
+            <p>Pembersihan data sementara dapat menjadi langkah pemeliharaan.</p>
+            <a class="case-link" href="#map-g-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-g-4">
+            <div class="problem-icon">🐦</div>
+            <h3>Folder cache Thunderbird membesar</h3>
+            <p>Cache aplikasi dapat dibersihkan melalui proses remote.</p>
+            <a class="case-link" href="#map-g-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-g-5">
+            <div class="problem-icon">🐦</div>
+            <h3>Pengguna mengalami gangguan aplikasi email dan butuh pemeliharaan</h3>
+            <p>Pembersihan cache/temp dapat dicoba tanpa harus datang langsung.</p>
+            <a class="case-link" href="#map-g-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-h-1">
+            <div class="problem-icon">🔌</div>
+            <h3>Flashdisk tidak terdeteksi pada port USB</h3>
+            <p>Kondisi perangkat dan port USB perlu diperiksa.</p>
+            <a class="case-link" href="#map-h-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-h-2">
+            <div class="problem-icon">🔌</div>
+            <h3>Speaker komputer tidak mengeluarkan suara</h3>
+            <p>Perangkat audio dan konfigurasi terkait perlu didiagnosis.</p>
+            <a class="case-link" href="#map-h-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-h-3">
+            <div class="problem-icon">🔌</div>
+            <h3>Mikrofon tidak terbaca saat rapat daring</h3>
+            <p>Input audio perlu diperiksa.</p>
+            <a class="case-link" href="#map-h-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-h-4">
+            <div class="problem-icon">🔌</div>
+            <h3>Combo jack headset tidak berfungsi sebagaimana mestinya</h3>
+            <p>Port audio gabungan perlu diperiksa.</p>
+            <a class="case-link" href="#map-h-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-h-5">
+            <div class="problem-icon">🔌</div>
+            <h3>Teknisi perlu mengumpulkan informasi kondisi USB dan audio</h3>
+            <p>Diagnostik membantu melihat informasi perangkat dan port terkait.</p>
+            <a class="case-link" href="#map-h-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-i-1">
+            <div class="problem-icon">🔄</div>
+            <h3>LibreOffice gagal dibuka dengan profil pengguna</h3>
+            <p>Konfigurasi profil dapat bermasalah dan perlu di-reset.</p>
+            <a class="case-link" href="#map-i-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-i-2">
+            <div class="problem-icon">🔄</div>
+            <h3>WPS Office mengalami error setelah perubahan konfigurasi</h3>
+            <p>Profil aplikasi perlu dipulihkan ke kondisi awal.</p>
+            <a class="case-link" href="#map-i-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-i-3">
+            <div class="problem-icon">🔄</div>
+            <h3>Dokumen office bermasalah akibat lock file</h3>
+            <p>File lock lama dapat menghambat pembukaan dokumen.</p>
+            <a class="case-link" href="#map-i-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-i-4">
+            <div class="problem-icon">🔄</div>
+            <h3>Aplikasi office sering hang saat dijalankan</h3>
+            <p>Reset profil dapat menjadi langkah troubleshooting konfigurasi.</p>
+            <a class="case-link" href="#map-i-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-i-5">
+            <div class="problem-icon">🔄</div>
+            <h3>Cache atau konfigurasi office perlu dibersihkan</h3>
+            <p>Profil LibreOffice/WPS dapat di-reset melalui menu pemeliharaan.</p>
+            <a class="case-link" href="#map-i-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-j-1">
+            <div class="problem-icon">📊</div>
+            <h3>Teknisi belum mengetahui spesifikasi komputer client</h3>
+            <p>Informasi sistem diperlukan untuk analisis awal.</p>
+            <a class="case-link" href="#map-j-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-j-2">
+            <div class="problem-icon">📊</div>
+            <h3>Perlu mengetahui versi sistem operasi yang digunakan</h3>
+            <p>Data sistem membantu menentukan langkah troubleshooting.</p>
+            <a class="case-link" href="#map-j-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-j-3">
+            <div class="problem-icon">📊</div>
+            <h3>Perlu memeriksa informasi CPU dan RAM</h3>
+            <p>Audit hardware memberi gambaran spesifikasi perangkat.</p>
+            <a class="case-link" href="#map-j-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-j-4">
+            <div class="problem-icon">📊</div>
+            <h3>Perlu mengumpulkan laporan kondisi perangkat dari jarak jauh</h3>
+            <p>Informasi sistem dapat dikirimkan tanpa pemeriksaan fisik awal.</p>
+            <a class="case-link" href="#map-j-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-j-5">
+            <div class="problem-icon">📊</div>
+            <h3>Tim IT membutuhkan inventaris perangkat untuk troubleshooting</h3>
+            <p>Laporan hardware membantu mencatat detail perangkat client.</p>
+            <a class="case-link" href="#map-j-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-k-1">
+            <div class="problem-icon">📶</div>
+            <h3>Wi-Fi sering terputus sendiri</h3>
+            <p>Pengaturan power management dapat memengaruhi kestabilan adaptor.</p>
+            <a class="case-link" href="#map-k-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-k-2">
+            <div class="problem-icon">📶</div>
+            <h3>Koneksi Wi-Fi terputus setelah komputer idle</h3>
+            <p>Pengaturan hemat daya adaptor perlu diperiksa.</p>
+            <a class="case-link" href="#map-k-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-k-3">
+            <div class="problem-icon">📶</div>
+            <h3>Wi-Fi tidak stabil pada laptop Ubuntu</h3>
+            <p>Perbaikan power management tersedia untuk lingkungan Ubuntu yang didukung script.</p>
+            <a class="case-link" href="#map-k-3">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-k-4">
+            <div class="problem-icon">📶</div>
+            <h3>Koneksi nirkabel bermasalah meski sinyal tersedia</h3>
+            <p>Pengaturan adaptor dapat menjadi salah satu faktor yang diperiksa.</p>
+            <a class="case-link" href="#map-k-4">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-k-5">
+            <div class="problem-icon">📶</div>
+            <h3>Teknisi perlu menstabilkan Wi-Fi client dari jarak jauh</h3>
+            <p>Menu perbaikan power management dapat dijalankan pada target.</p>
+            <a class="case-link" href="#map-k-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+    </div>
+</section>
+<section id="mapping">
+    <div class="section-header fade-in">
+        <div class="section-tag">Pemetaan Penanganan</div>
+        <h2>Dari Masalah ke Fitur yang Tepat</h2>
+        <p>Setelah mengenali kasus, lihat fitur pada script yang berkaitan dengan setiap masalah.</p>
+    </div>
+    <div class="mapping-list">
+<article class="mapping-card fade-in" id="map-a-1">
+            <div class="mapping-number">A01</div>
+            <div class="mapping-copy"><h3>Firefox terasa lambat saat membuka banyak tab</h3>
+            <p>Cache browser menumpuk dan halaman terasa lambat saat digunakan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
+            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-a-2">
+            <div class="mapping-number">A02</div>
+            <div class="mapping-copy"><h3>Chrome sering menampilkan halaman lama</h3>
+            <p>Cache lokal dapat membuat tampilan situs belum diperbarui.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
+            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-a-3">
+            <div class="mapping-number">A03</div>
+            <div class="mapping-copy"><h3>Browser sering bermasalah setelah pemakaian lama</h3>
+            <p>Data sementara dan sesi lama dapat mengganggu penggunaan browser.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
+            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-a-4">
+            <div class="mapping-number">A04</div>
+            <div class="mapping-copy"><h3>Riwayat browsing perlu dibersihkan dari komputer client</h3>
+            <p>Riwayat kunjungan dan data formulir masih tersimpan di profil browser.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
+            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-a-5">
+            <div class="mapping-number">A05</div>
+            <div class="mapping-copy"><h3>Pembersihan browser harus dilakukan tanpa menghapus bookmark</h3>
+            <p>Dibutuhkan pembersihan data sementara dengan tetap mempertahankan bookmark dan password tersimpan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
+            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-b-1">
+            <div class="mapping-number">B01</div>
+            <div class="mapping-copy"><h3>Dokumen tertahan di antrean printer</h3>
+            <p>Print job tidak selesai dan dokumen berikutnya ikut tertahan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
+            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-b-2">
+            <div class="mapping-number">B02</div>
+            <div class="mapping-copy"><h3>Printer tidak merespons perintah cetak</h3>
+            <p>Layanan antrean cetak mungkin perlu diperiksa dan dimulai ulang.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
+            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-b-3">
+            <div class="mapping-number">B03</div>
+            <div class="mapping-copy"><h3>Hasil cetak Epson bergaris atau kurang jelas</h3>
+            <p>Head printer mungkin memerlukan proses pembersihan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
+            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-b-4">
+            <div class="mapping-number">B04</div>
+            <div class="mapping-copy"><h3>Antrean CUPS menumpuk</h3>
+            <p>Spooler cetak memiliki pekerjaan yang gagal atau tertahan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
+            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-b-5">
+            <div class="mapping-number">B05</div>
+            <div class="mapping-copy"><h3>Pengguna tidak bisa mencetak saat pekerjaan mendesak</h3>
+            <p>Masalah antrean atau head printer menghambat proses cetak.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
+            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-c-1">
+            <div class="mapping-number">C01</div>
+            <div class="mapping-copy"><h3>Teknisi tidak mengetahui alamat IP komputer pengguna</h3>
+            <p>Alamat IP target perlu ditemukan pada jaringan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
+            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-c-2">
+            <div class="mapping-number">C02</div>
+            <div class="mapping-copy"><h3>Sulit menemukan komputer tertentu di jaringan kantor</h3>
+            <p>Pemeriksaan satu per satu memerlukan waktu lama.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
+            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-c-3">
+            <div class="mapping-number">C03</div>
+            <div class="mapping-copy"><h3>Perlu mengetahui host yang sedang aktif</h3>
+            <p>Status host pada rentang jaringan perlu diperiksa.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
+            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-c-4">
+            <div class="mapping-number">C04</div>
+            <div class="mapping-copy"><h3>Nama host komputer tidak diketahui</h3>
+            <p>Informasi hostname membantu mengenali perangkat yang merespons.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
+            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-c-5">
+            <div class="mapping-number">C05</div>
+            <div class="mapping-copy"><h3>Pemeriksaan jaringan harus dilakukan pada beberapa alamat sekaligus</h3>
+            <p>Rentang IP perlu dipindai agar host aktif dapat ditemukan lebih cepat.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
+            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-d-1">
+            <div class="mapping-number">D01</div>
+            <div class="mapping-copy"><h3>Komputer client perlu di-restart dari jarak jauh</h3>
+            <p>Restart diperlukan tanpa mendatangi lokasi perangkat.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
+            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-d-2">
+            <div class="mapping-number">D02</div>
+            <div class="mapping-copy"><h3>Komputer perlu dimatikan setelah jam kerja</h3>
+            <p>Perangkat dapat dimatikan secara terencana melalui akses remote.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
+            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-d-3">
+            <div class="mapping-number">D03</div>
+            <div class="mapping-copy"><h3>Perangkat tidak berada dekat dengan teknisi</h3>
+            <p>Tindakan power jarak jauh dibutuhkan jika koneksi remote masih tersedia.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
+            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-d-4">
+            <div class="mapping-number">D04</div>
+            <div class="mapping-copy"><h3>Restart dibutuhkan setelah pemeliharaan</h3>
+            <p>Perangkat perlu memulai ulang agar proses pemeliharaan selesai.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
+            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-d-5">
+            <div class="mapping-number">D05</div>
+            <div class="mapping-copy"><h3>Teknisi perlu memilih tindakan shutdown atau restart dengan cepat</h3>
+            <p>Pilihan tindakan daya harus disesuaikan dengan kondisi komputer.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
+            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-e-1">
+            <div class="mapping-number">E01</div>
+            <div class="mapping-copy"><h3>Sistem terasa lambat karena cache menumpuk</h3>
+            <p>Cache sistem dan file sementara dapat memakan ruang.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
+            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-e-2">
+            <div class="mapping-number">E02</div>
+            <div class="mapping-copy"><h3>Ruang penyimpanan berkurang akibat file sementara</h3>
+            <p>File cache yang tidak diperlukan perlu dibersihkan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
+            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-e-3">
+            <div class="mapping-number">E03</div>
+            <div class="mapping-copy"><h3>Komputer terasa berat setelah digunakan lama</h3>
+            <p>Pembersihan cache dan optimasi dasar dapat membantu pemeliharaan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
+            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-e-4">
+            <div class="mapping-number">E04</div>
+            <div class="mapping-copy"><h3>Penggunaan disk perlu diringankan</h3>
+            <p>File sementara yang aman dibersihkan dapat mengurangi pemakaian ruang.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
+            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-e-5">
+            <div class="mapping-number">E05</div>
+            <div class="mapping-copy"><h3>Perawatan rutin komputer client memerlukan proses cepat</h3>
+            <p>Optimasi dasar dapat dijalankan secara remote.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
+            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-f-1">
+            <div class="mapping-number">F01</div>
+            <div class="mapping-copy"><h3>Komputer pengguna tidak dapat dijangkau melalui jaringan</h3>
+            <p>Ping membantu memeriksa respons alamat IP.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
+            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-f-2">
+            <div class="mapping-number">F02</div>
+            <div class="mapping-copy"><h3>Koneksi ke satu server terasa putus-putus</h3>
+            <p>Respons ping dapat digunakan untuk pengamatan konektivitas dasar.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
+            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-f-3">
+            <div class="mapping-number">F03</div>
+            <div class="mapping-copy"><h3>Teknisi perlu memeriksa banyak IP dalam satu rentang</h3>
+            <p>Pemantauan ping rentang IP membantu menguji respons host.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
+            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-f-4">
+            <div class="mapping-number">F04</div>
+            <div class="mapping-copy"><h3>Akses remote gagal dan status jaringan belum jelas</h3>
+            <p>Pemeriksaan ping membantu membedakan masalah konektivitas awal.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
+            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-f-5">
+            <div class="mapping-number">F05</div>
+            <div class="mapping-copy"><h3>Perlu mengetahui apakah alamat IP merespons</h3>
+            <p>Ping single IP memberi indikasi host dapat dijangkau.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
+            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-g-1">
+            <div class="mapping-number">G01</div>
+            <div class="mapping-copy"><h3>Thunderbird berjalan lambat</h3>
+            <p>Cache dan file sementara aplikasi email mungkin menumpuk.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
+            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-g-2">
+            <div class="mapping-number">G02</div>
+            <div class="mapping-copy"><h3>Thunderbird sering crash</h3>
+            <p>Data sementara atau kondisi profil perlu diperiksa saat troubleshooting.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
+            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-g-3">
+            <div class="mapping-number">G03</div>
+            <div class="mapping-copy"><h3>Aplikasi email terasa berat setelah lama digunakan</h3>
+            <p>Pembersihan data sementara dapat menjadi langkah pemeliharaan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
+            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-g-4">
+            <div class="mapping-number">G04</div>
+            <div class="mapping-copy"><h3>Folder cache Thunderbird membesar</h3>
+            <p>Cache aplikasi dapat dibersihkan melalui proses remote.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
+            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-g-5">
+            <div class="mapping-number">G05</div>
+            <div class="mapping-copy"><h3>Pengguna mengalami gangguan aplikasi email dan butuh pemeliharaan</h3>
+            <p>Pembersihan cache/temp dapat dicoba tanpa harus datang langsung.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
+            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-h-1">
+            <div class="mapping-number">H01</div>
+            <div class="mapping-copy"><h3>Flashdisk tidak terdeteksi pada port USB</h3>
+            <p>Kondisi perangkat dan port USB perlu diperiksa.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
+            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-h-2">
+            <div class="mapping-number">H02</div>
+            <div class="mapping-copy"><h3>Speaker komputer tidak mengeluarkan suara</h3>
+            <p>Perangkat audio dan konfigurasi terkait perlu didiagnosis.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
+            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-h-3">
+            <div class="mapping-number">H03</div>
+            <div class="mapping-copy"><h3>Mikrofon tidak terbaca saat rapat daring</h3>
+            <p>Input audio perlu diperiksa.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
+            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-h-4">
+            <div class="mapping-number">H04</div>
+            <div class="mapping-copy"><h3>Combo jack headset tidak berfungsi sebagaimana mestinya</h3>
+            <p>Port audio gabungan perlu diperiksa.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
+            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-h-5">
+            <div class="mapping-number">H05</div>
+            <div class="mapping-copy"><h3>Teknisi perlu mengumpulkan informasi kondisi USB dan audio</h3>
+            <p>Diagnostik membantu melihat informasi perangkat dan port terkait.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
+            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-i-1">
+            <div class="mapping-number">I01</div>
+            <div class="mapping-copy"><h3>LibreOffice gagal dibuka dengan profil pengguna</h3>
+            <p>Konfigurasi profil dapat bermasalah dan perlu di-reset.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
+            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-i-2">
+            <div class="mapping-number">I02</div>
+            <div class="mapping-copy"><h3>WPS Office mengalami error setelah perubahan konfigurasi</h3>
+            <p>Profil aplikasi perlu dipulihkan ke kondisi awal.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
+            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-i-3">
+            <div class="mapping-number">I03</div>
+            <div class="mapping-copy"><h3>Dokumen office bermasalah akibat lock file</h3>
+            <p>File lock lama dapat menghambat pembukaan dokumen.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
+            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-i-4">
+            <div class="mapping-number">I04</div>
+            <div class="mapping-copy"><h3>Aplikasi office sering hang saat dijalankan</h3>
+            <p>Reset profil dapat menjadi langkah troubleshooting konfigurasi.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
+            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-i-5">
+            <div class="mapping-number">I05</div>
+            <div class="mapping-copy"><h3>Cache atau konfigurasi office perlu dibersihkan</h3>
+            <p>Profil LibreOffice/WPS dapat di-reset melalui menu pemeliharaan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
+            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-j-1">
+            <div class="mapping-number">J01</div>
+            <div class="mapping-copy"><h3>Teknisi belum mengetahui spesifikasi komputer client</h3>
+            <p>Informasi sistem diperlukan untuk analisis awal.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
+            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-j-2">
+            <div class="mapping-number">J02</div>
+            <div class="mapping-copy"><h3>Perlu mengetahui versi sistem operasi yang digunakan</h3>
+            <p>Data sistem membantu menentukan langkah troubleshooting.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
+            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-j-3">
+            <div class="mapping-number">J03</div>
+            <div class="mapping-copy"><h3>Perlu memeriksa informasi CPU dan RAM</h3>
+            <p>Audit hardware memberi gambaran spesifikasi perangkat.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
+            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-j-4">
+            <div class="mapping-number">J04</div>
+            <div class="mapping-copy"><h3>Perlu mengumpulkan laporan kondisi perangkat dari jarak jauh</h3>
+            <p>Informasi sistem dapat dikirimkan tanpa pemeriksaan fisik awal.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
+            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-j-5">
+            <div class="mapping-number">J05</div>
+            <div class="mapping-copy"><h3>Tim IT membutuhkan inventaris perangkat untuk troubleshooting</h3>
+            <p>Laporan hardware membantu mencatat detail perangkat client.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
+            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-k-1">
+            <div class="mapping-number">K01</div>
+            <div class="mapping-copy"><h3>Wi-Fi sering terputus sendiri</h3>
+            <p>Pengaturan power management dapat memengaruhi kestabilan adaptor.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
+            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-k-2">
+            <div class="mapping-number">K02</div>
+            <div class="mapping-copy"><h3>Koneksi Wi-Fi terputus setelah komputer idle</h3>
+            <p>Pengaturan hemat daya adaptor perlu diperiksa.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
+            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-k-3">
+            <div class="mapping-number">K03</div>
+            <div class="mapping-copy"><h3>Wi-Fi tidak stabil pada laptop Ubuntu</h3>
+            <p>Perbaikan power management tersedia untuk lingkungan Ubuntu yang didukung script.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
+            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-k-4">
+            <div class="mapping-number">K04</div>
+            <div class="mapping-copy"><h3>Koneksi nirkabel bermasalah meski sinyal tersedia</h3>
+            <p>Pengaturan adaptor dapat menjadi salah satu faktor yang diperiksa.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
+            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-k-5">
+            <div class="mapping-number">K05</div>
+            <div class="mapping-copy"><h3>Teknisi perlu menstabilkan Wi-Fi client dari jarak jauh</h3>
+            <p>Menu perbaikan power management dapat dijalankan pada target.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
+            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+    </div>
+</section>
+<section id="features">
+    <div class="section-header fade-in">
+        <div class="section-tag">Fitur Unggulan</div>
+        <h2>11 Fitur Powerful dalam Satu Bot</h2>
+        <p>Semua kebutuhan IT support harian Anda, tersedia dalam genggaman</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card fade-in" id="feature-a">
+            <span class="feature-letter">A</span>
+            <div class="feature-icon"></div>
+            <h3>Clear Browser</h3>
+            <p>Bersihkan cache, history, cookies, dan session data dari Firefox & Chrome secara remote. Bookmarks dan password tersimpan aman.</p>
+            <div class="feature-tags">
+                <span class="tag">Firefox</span>
+                <span class="tag">Chrome</span>
+                <span class="tag">SQLite VACUUM</span>
+            </div>
+            <a class="feature-case-link" href="#case-a-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-b">
+            <span class="feature-letter">B</span>
+            <div class="feature-icon">🖨️</div>
+            <h3>Printer Maintenance</h3>
+            <p>Print Head Cleaning untuk printer Epson dan Clear & Restart CUPS untuk membersihkan antrian print job yang macet.</p>
+            <div class="feature-tags">
+                <span class="tag">Epson</span>
+                <span class="tag">CUPS</span>
+                <span class="tag">escputil</span>
+            </div>
+            <a class="feature-case-link" href="#case-b-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-c">
+            <span class="feature-letter">C</span>
+            <div class="feature-icon">📡</div>
+            <h3>IP Scanner</h3>
+            <p>Scan jaringan secara paralel untuk menemukan host aktif, lengkap dengan hostname dan response time. Support range IP custom.</p>
+            <div class="feature-tags">
+                <span class="tag">Parallel Ping</span>
+                <span class="tag">Hostname</span>
+                <span class="tag">Multi-page</span>
+            </div>
+            <a class="feature-case-link" href="#case-c-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-d">
+            <span class="feature-letter">D</span>
+            <div class="feature-icon">⏻</div>
+            <h3>Shutdown / Restart</h3>
+            <p>Kontrol daya remote dengan konfirmasi berlapis. Shutdown atau restart komputer client dari jarak jauh dengan aman.</p>
+            <div class="feature-tags">
+                <span class="tag">Remote Power</span>
+                <span class="tag">Confirmation</span>
+                <span class="tag">Safe</span>
+            </div>
+            <a class="feature-case-link" href="#case-d-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-e">
+            <span class="feature-letter">E</span>
+            <div class="feature-icon">⚡</div>
+            <h3>System Optimizer</h3>
+            <p>6-step optimization: clean APT cache, drop memory cache, bersihkan /tmp, vacuum journals, dan hapus unused dependencies.</p>
+            <div class="feature-tags">
+                <span class="tag">APT Clean</span>
+                <span class="tag">Memory Drop</span>
+                <span class="tag">Journal Vacuum</span>
+            </div>
+            <a class="feature-case-link" href="#case-e-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-f">
+            <span class="feature-letter">F</span>
+            <div class="feature-icon">📶</div>
+            <h3>Ping Monitor</h3>
+            <p>Test konektivitas network dengan mode Single IP atau IP Range. Statistik lengkap: packet loss, RTT, dan status reachability.</p>
+            <div class="feature-tags">
+                <span class="tag">ICMP</span>
+                <span class="tag">Range Scan</span>
+                <span class="tag">Statistics</span>
+            </div>
+            <a class="feature-case-link" href="#case-f-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-g">
+            <span class="feature-letter">G</span>
+            <div class="feature-icon">🐦</div>
+            <h3>Thunderbird Cleaner</h3>
+            <p>Bersihkan cache Thunderbird, file temporary besar (nsma), crash reports, dan compact database SQLite untuk performa optimal.</p>
+            <div class="feature-tags">
+                <span class="tag">Cache Clean</span>
+                <span class="tag">VACUUM</span>
+                <span class="tag">/tmp Cleanup</span>
+            </div>
+            <a class="feature-case-link" href="#case-g-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-h">
+            <span class="feature-letter">H</span>
+            <div class="feature-icon">🔌</div>
+            <h3>Diagnostik USB & Audio</h3>
+            <p>Deteksi port USB, jack audio (3.5mm), mic internal, log error hardware, dan korsleting/over-current secara otomatis.</p>
+            <div class="feature-tags">
+                <span class="tag">USB Topology</span>
+                <span class="tag">Jack Sensing</span>
+                <span class="tag">dmesg</span>
+            </div>
+            <a class="feature-case-link" href="#case-h-1">Lihat 5 kasus terkait →</a>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-i">
+            <span class="feature-letter">I</span>
+            <div class="feature-icon"></div>
+            <h3>Reset Office Profile</h3>
+            <a class="feature-case-link" href="#case-i-1">Lihat 5 kasus terkait →</a>
+            <p>Reset konfigurasi LibreOffice & WPS Office ke default. Backup otomatis ke /tmp, hapus lock files, dan clear recent documents.</p>
+            <div class="feature-tags">
+                <span class="tag">LibreOffice</span>
+                <span class="tag">WPS Office</span>
+                <span class="tag">Auto Backup</span>
+            </div>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-j">
+            <span class="feature-letter">J</span>
+            <div class="feature-icon">📊</div>
+            <h3>System Info & Audit</h3>
+            <a class="feature-case-link" href="#case-j-1">Lihat 5 kasus terkait →</a>
+            <p>Laporan lengkap 15 aspek: OS, CPU, RAM, Disk, Network, GPU, Battery Health, Temperature, SMART disk, failed services, dan lainnya.</p>
+            <div class="feature-tags">
+                <span class="tag">15 Checks</span>
+                <span class="tag">Battery Health</span>
+                <span class="tag">SMART</span>
+            </div>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-k">
+            <span class="feature-letter">K</span>
+            <div class="feature-icon"></div>
+            <h3>Fix WiFi Power Mgmt</h3>
+            <a class="feature-case-link" href="#case-k-1">Lihat 5 kasus terkait →</a>
+            <p>Atasi WiFi disconnect dengan mematikan Power Management. Auto-detect Ubuntu 20/22/24 dan WiFi interface. Konfigurasi permanen.</p>
+            <div class="feature-tags">
+                <span class="tag">Auto Detect</span>
+                <span class="tag">NetworkManager</span>
+                <span class="tag">Permanent Fix</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problems Section -->
+<section id="architecture">
+    <div class="section-header fade-in">
+        <div class="section-tag">Arsitektur Sistem</div>
+        <h2>Blok Diagram Arsitektur</h2>
+        <p>Alur kerja sistem dari user hingga eksekusi di client</p>
+    </div>
+    <div class="diagram-container fade-in">
+        <div class="diagram">
+            <!-- Layer 1: Actors -->
+            <div class="diagram-layer">
+                <div class="diagram-box user">
+                    <div class="icon">‍💼</div>
+                    <h4>IT Administrator</h4>
+                    <p>User yang mengendalikan bot</p>
+                </div>
+                <div class="diagram-box user">
+                    <div class="icon">📱</div>
+                    <h4>Telegram Client</h4>
+                    <p>Mobile / Desktop App</p>
+                </div>
+            </div>
+
+            <div class="diagram-arrow">⬇️ ️</div>
+
+            <!-- Layer 2: Bot Server -->
+            <div class="diagram-layer">
+                <div class="diagram-box server" style="min-width: 400px;">
+                    <div class="icon">🤖</div>
+                    <h4>All-in-One Bot Server</h4>
+                    <p>Ubuntu Server + Bash Script + Telegram API</p>
+                </div>
+            </div>
+
+            <div class="diagram-arrow">⬇️ ⬆️</div>
+
+            <!-- Layer 3: Communication -->
+            <div class="diagram-layer">
+                <div class="diagram-box" style="min-width: 300px;">
+                    <div class="icon">🔐</div>
+                    <h4>SSH Connection</h4>
+                    <p>Encrypted + Password Auth + Sudo</p>
+                </div>
+            </div>
+
+            <div class="diagram-arrow">⬇️ ️</div>
+
+            <!-- Layer 4: Clients -->
+            <div class="diagram-layer">
+                <div class="diagram-box client">
+                    <div class="icon">💻</div>
+                    <h4>Client PC #1</h4>
+                    <p>Ubuntu 20/22/24</p>
+                </div>
+                <div class="diagram-box client">
+                    <div class="icon">💻</div>
+                    <h4>Client PC #2</h4>
+                    <p>Ubuntu 20/22/24</p>
+                </div>
+                <div class="diagram-box client">
+                    <div class="icon">💻</div>
+                    <h4>Client PC #N</h4>
+                    <p>Ubuntu 20/22/24</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flow Diagram -->
+    <div class="diagram-container fade-in" style="margin-top: 2rem;">
+        <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">🔄 Alur Eksekusi Fitur</h3>
+        <div class="diagram-flow">
+            <div class="flow-step">
+                <div class="step-num">1</div>
+                <h5>User Input</h5>
+                <p>Kirim command via Telegram</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-num">2</div>
+                <h5>Auth Check</h5>
+                <p>Validasi password & kredensial</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-num">3</div>
+                <h5>SSH Connect</h5>
+                <p>Test koneksi ke target IP</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-num">4</div>
+                <h5>Upload Script</h5>
+                <p>Deploy embedded bash script</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-num">5</div>
+                <h5>Execute</h5>
+                <p>Run dengan sudo privileges</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-num">6</div>
+                <h5>Report</h5>
+                <p>Kirim hasil ke Telegram</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="fade-in" style="margin-top: 3rem;">
+        <h3 style="text-align: center; margin-bottom: 1rem; font-size: 1.5rem;">️ Technology Stack</h3>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-icon">🐧</div>
+                <h4>Bash</h4>
+                <p>Scripting Language</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">📡</div>
+                <h4>Telegram API</h4>
+                <p>Bot Interface</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔐</div>
+                <h4>SSH</h4>
+                <p>Remote Access</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"></div>
+                <h4>cURL</h4>
+                <p>HTTP Client</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔧</div>
+                <h4>sshpass</h4>
+                <p>SSH Automation</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">📊</div>
+                <h4>jq</h4>
+                <p>JSON Parser</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🗄️</div>
+                <h4>SQLite3</h4>
+                <p>Database Cleaner</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🐧</div>
+                <h4>Ubuntu</h4>
+                <p>20/22/24 LTS</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How to Use -->
+<section id="howto">
+    <div class="section-header fade-in">
+        <div class="section-tag">Panduan Penggunaan</div>
+        <h2>Cara Menggunakan Bot</h2>
+        <p>4 langkah mudah untuk mulai mengendalikan IT infrastructure Anda</p>
+    </div>
+    <div class="steps-container">
+        <div class="step-card fade-in">
+            <h3>Start Bot</h3>
+            <p>Kirim perintah <code>/start</code> ke bot Telegram untuk melihat menu utama dengan 11 fitur yang tersedia.</p>
+            <code>/start</code>
+        </div>
+
+        <div class="step-card fade-in">
+            <h3>Autentikasi</h3>
+            <p>Masukkan password bot dengan <code>/auth</code>, lalu isi kredensial SSH remote (username, password, sudo password).</p>
+            <code>/auth P455w0rd</code>
+        </div>
+
+        <div class="step-card fade-in">
+            <h3>Pilih Fitur</h3>
+            <p>Klik menu fitur yang diinginkan (A-K) atau gunakan command langsung seperti <code>/fixwifi</code>, <code>/sysinfo</code>, dll.</p>
+            <code>/fixwifi 192.168.222.10</code>
+        </div>
+
+        <div class="step-card fade-in">
+            <h3>Input Target & Execute</h3>
+            <p>Masukkan IP address target komputer client. Bot akan otomatis connect, upload script, execute, dan kirim laporan.</p>
+            <code>192.168.222.10</code>
+        </div>
+    </div>
+
+    <div class="fade-in" style="margin-top: 4rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1)); border: 1px solid var(--primary); border-radius: 24px; padding: 3rem; text-align: center;">
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;"> Command Cheat Sheet</h3>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Perintah cepat untuk akses langsung ke fitur</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left;">
+            <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+                <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/clear [IP]</code>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Clear Browser</p>
+            </div>
+            <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+                <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/tbclean [IP]</code>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Thunderbird Cleaner</p>
+            </div>
+            <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+                <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/diagnostic [IP]</code>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">USB & Audio Diag</p>
+            </div>
+            <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+                <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/resetprofile [IP]</code>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Reset Office</p>
+            </div>
+            <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+                <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/sysinfo [IP]</code>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">System Audit</p>
+            </div>
+            <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+                <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/fixwifi [IP]</code>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Fix WiFi</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">🤖 All-in-One IT Support Bot</div>
+        <p class="footer-text">
+            Dikembangkan untuk <strong>PT Salam Pacific Indonesia Lines</strong><br>
+            Versi 2.0 | Otomatisasi IT Support via Telegram
+        </p>
+        <div class="footer-bottom">
+            <p>© 2026 All Rights Reserved | Built with ❤️ using Bash, Telegram API & SSH</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    // Scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('navLinks').classList.remove('active');
+            }
+        });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.background = 'rgba(15, 23, 42, 0.95)';
+        } else {
+            nav.style.background = 'rgba(15, 23, 42, 0.8)';
+        }
+    });
+</script>
+
+</body>
+</html>
