@@ -918,7 +918,7 @@
         </div>
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-number">57</div>
+                <div class="stat-number">60</div>
                 <div class="stat-label">Kasus Client</div>
             </div>
             <div class="stat-item">
@@ -961,7 +961,7 @@
 <section id="problems">
     <div class="section-header fade-in">
         <div class="section-tag">Kenali Kendala Client</div>
-        <h2>57 Kasus IT yang Sering Ditemui</h2>
+        <h2>60 Kasus IT yang Sering Ditemui</h2>
         <p>Mulai dari masalah yang dialami pengguna. Daftar ini sengaja menampilkan kendala terlebih dahulu, sebelum membahas fitur yang dapat membantu penanganannya.</p>
     </div>
     <div class="problem-intro">
@@ -1310,6 +1310,24 @@
             <h3>Teknisi perlu menstabilkan Wi-Fi client dari jarak jauh</h3>
             <p>Menu perbaikan power management dapat dijalankan pada target.</p>
             <a class="case-link" href="#map-k-5">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-l-1">
+            <div class="problem-icon">🏢</div>
+            <h3>Pengelompokan komputer berdasarkan divisi dan nama user belum seragam</h3>
+            <p>Hostname yang mengikuti pola penamaan perusahaan membantu tim IT mengenali divisi dan pengguna tanpa harus melakukan SSH manual dari komputer teknisi.</p>
+            <a class="case-link" href="#map-l-1">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-l-2">
+            <div class="problem-icon">📋</div>
+            <h3>Identifikasi aset dan inventaris komputer membutuhkan waktu</h3>
+            <p>Penamaan hostname yang konsisten mempermudah identifikasi perangkat dan pencatatan inventaris secara lebih terstruktur melalui pengelolaan jarak jauh.</p>
+            <a class="case-link" href="#map-l-2">Lihat penanganan <span aria-hidden="true">→</span></a>
+        </article>
+<article class="problem-card fade-in" id="case-l-3">
+            <div class="problem-icon">🛡️</div>
+            <h3>Penamaan perangkat berpotensi tidak konsisten dan menyulitkan pengelolaan jaringan</h3>
+            <p>Standarisasi hostname berdasarkan kebijakan IT TS SPIL membantu membedakan perangkat dan mendukung pengelolaan jaringan yang lebih tertib serta mengurangi risiko salah identifikasi atau konflik akibat penamaan yang tidak terencana.</p>
+            <a class="case-link" href="#map-l-3">Lihat penanganan <span aria-hidden="true">→</span></a>
         </article>
     </div>
 </section>
@@ -1719,6 +1737,27 @@
             <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
             <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
         </article>
+<article class="mapping-card fade-in" id="map-l-1">
+            <div class="mapping-number">L01</div>
+            <div class="mapping-copy"><h3>Pengelompokan komputer berdasarkan divisi dan nama user belum seragam</h3>
+            <p>Gunakan pola hostname yang disepakati untuk membantu mengenali divisi dan pengguna pada nama perangkat.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Update Hostname — mengubah hostname komputer client dari jarak jauh tanpa SSH manual dari komputer teknisi.</div></div>
+            <a class="case-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-l-2">
+            <div class="mapping-number">L02</div>
+            <div class="mapping-copy"><h3>Identifikasi aset dan inventaris komputer membutuhkan waktu</h3>
+            <p>Hostname yang konsisten dapat menjadi identitas perangkat yang membantu pencatatan dan penelusuran inventaris.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Update Hostname — memperbarui identitas hostname dari jarak jauh untuk mendukung inventaris yang lebih terstruktur.</div></div>
+            <a class="case-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
+<article class="mapping-card fade-in" id="map-l-3">
+            <div class="mapping-number">L03</div>
+            <div class="mapping-copy"><h3>Penamaan perangkat perlu mengikuti standar IT TS SPIL</h3>
+            <p>Pola hostname yang seragam membantu tim IT membedakan perangkat dan mengurangi risiko salah identifikasi maupun penamaan yang saling bertabrakan.</p>
+            <div class="problem-solution"><strong>Fitur terkait:</strong> Update Hostname — mendukung penerapan standar penamaan perangkat. Pencegahan konflik IP tetap memerlukan perencanaan alamat IP/DNS yang terpisah.</div></div>
+            <a class="case-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a>
+        </article>
     </div>
 </section>
 <section id="features">
@@ -1876,7 +1915,8 @@
             <span class="feature-letter">L</span>
             <div class="feature-icon">🖥️</div>
             <h3>Update Hostname</h3>
-            <p>Mengubah hostname komputer client dari jarak jauh. Script memperbarui <code>/etc/hostname</code> dan entri hostname pada <code>/etc/hosts</code>, memverifikasi hasil perubahan, serta menyediakan pilihan restart sekarang atau nanti.</p>
+            <a class="feature-case-link" href="#case-l-1">Lihat 3 kasus terkait →</a>
+            <p>Mengubah hostname komputer client dari jarak jauh. Script memperbarui <code>/etc/hostname</code> dan entri hostname pada <code>/etc/hosts</code>, memverifikasi hasil perubahan, serta menyediakan pilihan restart sekarang atau nanti. Penamaan yang konsisten mendukung pengelompokan divisi/user, identifikasi aset, dan penerapan standar IT TS SPIL.</p>
             <div class="feature-tags">
                 <span class="tag">Remote Hostname</span>
                 <span class="tag">/etc/hostname</span>
