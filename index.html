@@ -1724,7 +1724,7 @@
 <section id="features">
     <div class="section-header fade-in">
         <div class="section-tag">Fitur Unggulan</div>
-        <h2>11 Fitur Powerful dalam Satu Bot</h2>
+        <h2>12 Fitur Powerful dalam Satu Bot</h2>
         <p>Semua kebutuhan IT support harian Anda, tersedia dalam genggaman</p>
     </div>
     <div class="features-grid">
@@ -1759,7 +1759,7 @@
             <span class="feature-letter">C</span>
             <div class="feature-icon">📡</div>
             <h3>IP Scanner</h3>
-            <p>Scan jaringan secara paralel untuk menemukan host aktif, lengkap dengan hostname dan response time. Support range IP custom.</p>
+            <p>Scan rentang IP secara paralel menggunakan ping untuk menemukan host aktif. Bot juga mencoba mengambil hostname setiap host melalui SSH dan menyajikan hasil dalam beberapa halaman.</p>
             <div class="feature-tags">
                 <span class="tag">Parallel Ping</span>
                 <span class="tag">Hostname</span>
@@ -1785,7 +1785,7 @@
             <span class="feature-letter">E</span>
             <div class="feature-icon">⚡</div>
             <h3>System Optimizer</h3>
-            <p>6-step optimization: clean APT cache, drop memory cache, bersihkan /tmp, vacuum journals, dan hapus unused dependencies.</p>
+            <p>Optimasi 6 tahap: membersihkan APT cache, melepas page cache/dentries/inodes, membersihkan isi /tmp, menghapus file lama di /var/tmp (lebih dari 7 hari), vacuum systemd journal, serta menghapus dependensi yang tidak lagi diperlukan.</p>
             <div class="feature-tags">
                 <span class="tag">APT Clean</span>
                 <span class="tag">Memory Drop</span>
@@ -1798,7 +1798,7 @@
             <span class="feature-letter">F</span>
             <div class="feature-icon">📶</div>
             <h3>Ping Monitor</h3>
-            <p>Test konektivitas network dengan mode Single IP atau IP Range. Statistik lengkap: packet loss, RTT, dan status reachability.</p>
+            <p>Uji konektivitas menggunakan ping 15 paket untuk Single IP, dengan ringkasan paket terkirim/diterima, packet loss, dan RTT rata-rata. Mode IP Range memeriksa setiap IP dan merangkum jumlah host reachable serta unreachable.</p>
             <div class="feature-tags">
                 <span class="tag">ICMP</span>
                 <span class="tag">Range Scan</span>
@@ -1811,7 +1811,7 @@
             <span class="feature-letter">G</span>
             <div class="feature-icon">🐦</div>
             <h3>Thunderbird Cleaner</h3>
-            <p>Bersihkan cache Thunderbird, file temporary besar (nsma), crash reports, dan compact database SQLite untuk performa optimal.</p>
+            <p>Membersihkan cache dan data sementara Thunderbird, termasuk file temporary, crash reports, serta melakukan pemeliharaan database SQLite sesuai proses pada script remote.</p>
             <div class="feature-tags">
                 <span class="tag">Cache Clean</span>
                 <span class="tag">VACUUM</span>
@@ -1824,7 +1824,7 @@
             <span class="feature-letter">H</span>
             <div class="feature-icon">🔌</div>
             <h3>Diagnostik USB & Audio</h3>
-            <p>Deteksi port USB, jack audio (3.5mm), mic internal, log error hardware, dan korsleting/over-current secara otomatis.</p>
+            <p>Mengumpulkan informasi diagnostik USB dan audio, termasuk perangkat/port USB, perangkat audio dan jack, mikrofon, serta pesan error hardware dari log sistem.</p>
             <div class="feature-tags">
                 <span class="tag">USB Topology</span>
                 <span class="tag">Jack Sensing</span>
@@ -1838,7 +1838,7 @@
             <div class="feature-icon"></div>
             <h3>Reset Office Profile</h3>
             <a class="feature-case-link" href="#case-i-1">Lihat 5 kasus terkait →</a>
-            <p>Reset konfigurasi LibreOffice & WPS Office ke default. Backup otomatis ke /tmp, hapus lock files, dan clear recent documents.</p>
+            <p>Reset profil LibreOffice & WPS Office melalui proses remote. Script membuat backup sebelum perubahan, menangani lock files, dan membersihkan data konfigurasi terkait.</p>
             <div class="feature-tags">
                 <span class="tag">LibreOffice</span>
                 <span class="tag">WPS Office</span>
@@ -1851,7 +1851,7 @@
             <div class="feature-icon">📊</div>
             <h3>System Info & Audit</h3>
             <a class="feature-case-link" href="#case-j-1">Lihat 5 kasus terkait →</a>
-            <p>Laporan lengkap 15 aspek: OS, CPU, RAM, Disk, Network, GPU, Battery Health, Temperature, SMART disk, failed services, dan lainnya.</p>
+            <p>Mengumpulkan laporan informasi sistem dan hardware, termasuk OS, CPU, RAM, disk/storage, jaringan, GPU, baterai dan temperatur bila tersedia, serta pemeriksaan kondisi perangkat dan service.</p>
             <div class="feature-tags">
                 <span class="tag">15 Checks</span>
                 <span class="tag">Battery Health</span>
@@ -1864,11 +1864,24 @@
             <div class="feature-icon"></div>
             <h3>Fix WiFi Power Mgmt</h3>
             <a class="feature-case-link" href="#case-k-1">Lihat 5 kasus terkait →</a>
-            <p>Atasi WiFi disconnect dengan mematikan Power Management. Auto-detect Ubuntu 20/22/24 dan WiFi interface. Konfigurasi permanen.</p>
+            <p>Memperbaiki Wi-Fi yang sering disconnect dengan menonaktifkan Power Management pada interface Wi-Fi yang terdeteksi. Script menyesuaikan metode konfigurasi berdasarkan lingkungan Ubuntu/NetworkManager yang didukung.</p>
             <div class="feature-tags">
                 <span class="tag">Auto Detect</span>
                 <span class="tag">NetworkManager</span>
                 <span class="tag">Permanent Fix</span>
+            </div>
+        </div>
+
+        <div class="feature-card fade-in" id="feature-l">
+            <span class="feature-letter">L</span>
+            <div class="feature-icon">🖥️</div>
+            <h3>Update Hostname</h3>
+            <p>Mengubah hostname komputer client dari jarak jauh. Script memperbarui <code>/etc/hostname</code> dan entri hostname pada <code>/etc/hosts</code>, memverifikasi hasil perubahan, serta menyediakan pilihan restart sekarang atau nanti.</p>
+            <div class="feature-tags">
+                <span class="tag">Remote Hostname</span>
+                <span class="tag">/etc/hostname</span>
+                <span class="tag">/etc/hosts</span>
+                <span class="tag">Restart Now / Later</span>
             </div>
         </div>
     </div>
@@ -2042,7 +2055,7 @@
     <div class="steps-container">
         <div class="step-card fade-in">
             <h3>Start Bot</h3>
-            <p>Kirim perintah <code>/start</code> ke bot Telegram untuk melihat menu utama dengan 11 fitur yang tersedia.</p>
+            <p>Kirim perintah <code>/start</code> ke bot Telegram untuk melihat menu utama dengan 12 fitur yang tersedia.</p>
             <code>/start</code>
         </div>
 
@@ -2054,7 +2067,7 @@
 
         <div class="step-card fade-in">
             <h3>Pilih Fitur</h3>
-            <p>Klik menu fitur yang diinginkan (A-K) atau gunakan command langsung seperti <code>/fixwifi</code>, <code>/sysinfo</code>, dll.</p>
+            <p>Klik menu fitur yang diinginkan (A-L) atau gunakan command langsung seperti <code>/fixwifi</code>, <code>/sysinfo</code>, atau <code>/hostname</code>.</p>
             <code>/fixwifi 192.168.222.10</code>
         </div>
 
@@ -2092,6 +2105,10 @@
             <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
                 <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/fixwifi [IP]</code>
                 <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Fix WiFi</p>
+            </div>
+            <div style="background: var(--card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+                <code style="color: var(--accent); font-family: 'Fira Code', monospace;">/hostname [IP]</code>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Update Hostname</p>
             </div>
         </div>
     </div>
