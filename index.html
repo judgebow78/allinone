@@ -886,6 +886,42 @@
         .mapping-copy h3 { font-size: .98rem; }
     }
 
+
+/* Tabel pemetaan kasus: mudah dipindai dan responsif */
+.mapping-table-wrap{
+  width:100%;overflow-x:auto;border:1px solid var(--border);
+  border-radius:18px;background:var(--card);
+  box-shadow:0 16px 42px rgba(0,0,0,.18);-webkit-overflow-scrolling:touch;
+}
+.mapping-table{width:100%;min-width:900px;border-collapse:separate;border-spacing:0;text-align:left}
+.mapping-table th{
+  position:sticky;top:0;z-index:1;padding:1rem 1.1rem;
+  background:linear-gradient(135deg,rgba(99,102,241,.28),rgba(6,182,212,.18));
+  color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.045em;
+  border-bottom:1px solid rgba(148,163,184,.25)
+}
+.mapping-table td{
+  padding:1rem 1.1rem;color:var(--text-muted);font-size:.88rem;
+  vertical-align:top;border-bottom:1px solid var(--border)
+}
+.mapping-table tbody tr:last-child td{border-bottom:0}
+.mapping-table tbody tr:hover{background:rgba(99,102,241,.09)}
+.mapping-table-number{width:76px;color:#fff!important;font-weight:850;white-space:nowrap}
+.mapping-table-case{min-width:220px}
+.mapping-table-case strong{color:var(--text);font-size:.92rem}
+.mapping-table-feature{min-width:260px}
+.mapping-table-feature .problem-solution{display:inline-block;line-height:1.55}
+.mapping-table-link{
+  white-space:nowrap;margin-top:0;padding:.5rem .7rem;
+  border:1px solid rgba(103,232,249,.25);border-radius:9px
+}
+.mapping-table td code{overflow-wrap:anywhere}
+@media(max-width:700px){
+  .mapping-table-wrap{border-radius:13px}
+  .mapping-table{min-width:820px}
+  .mapping-table th,.mapping-table td{padding:.8rem .75rem;font-size:.8rem}
+}
+
 </style>
 </head>
 <body>
@@ -1337,427 +1373,378 @@
         <h2>Dari Masalah ke Fitur yang Tepat</h2>
         <p>Setelah mengenali kasus, lihat fitur pada script yang berkaitan dengan setiap masalah.</p>
     </div>
-    <div class="mapping-list">
-<article class="mapping-card fade-in" id="map-a-1">
-            <div class="mapping-number">A01</div>
-            <div class="mapping-copy"><h3>Firefox terasa lambat saat membuka banyak tab</h3>
-            <p>Cache browser menumpuk dan halaman terasa lambat saat digunakan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
-            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-a-2">
-            <div class="mapping-number">A02</div>
-            <div class="mapping-copy"><h3>Chrome sering menampilkan halaman lama</h3>
-            <p>Cache lokal dapat membuat tampilan situs belum diperbarui.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
-            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-a-3">
-            <div class="mapping-number">A03</div>
-            <div class="mapping-copy"><h3>Browser sering bermasalah setelah pemakaian lama</h3>
-            <p>Data sementara dan sesi lama dapat mengganggu penggunaan browser.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
-            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-a-4">
-            <div class="mapping-number">A04</div>
-            <div class="mapping-copy"><h3>Riwayat browsing perlu dibersihkan dari komputer client</h3>
-            <p>Riwayat kunjungan dan data formulir masih tersimpan di profil browser.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
-            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-a-5">
-            <div class="mapping-number">A05</div>
-            <div class="mapping-copy"><h3>Pembersihan browser harus dilakukan tanpa menghapus bookmark</h3>
-            <p>Dibutuhkan pembersihan data sementara dengan tetap mempertahankan bookmark dan password tersimpan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser</div></div>
-            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-a-6">
-            <div class="mapping-number">A06</div>
-            <div class="mapping-copy"><h3>Website masih menggunakan informasi DNS lama</h3>
-            <p>Setelah perubahan DNS, komputer client masih menyimpan cache DNS sehingga website dapat mengarah ke alamat yang lama.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser — Flush DNS sistem menggunakan <code>resolvectl flush-caches</code> atau restart <code>systemd-resolved</code>.</div></div>
-            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-a-7">
-            <div class="mapping-number">A07</div>
-            <div class="mapping-copy"><h3>Website tidak dapat diakses setelah perubahan DNS</h3>
-            <p>Cache DNS sistem yang belum diperbarui dapat menghambat browser mengakses alamat website yang benar.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Clear Browser — Flush DNS sistem menggunakan <code>resolvectl flush-caches</code> atau restart <code>systemd-resolved</code>.</div></div>
-            <a class="case-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-b-1">
-            <div class="mapping-number">B01</div>
-            <div class="mapping-copy"><h3>Dokumen tertahan di antrean printer</h3>
-            <p>Print job tidak selesai dan dokumen berikutnya ikut tertahan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
-            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-b-2">
-            <div class="mapping-number">B02</div>
-            <div class="mapping-copy"><h3>Printer tidak merespons perintah cetak</h3>
-            <p>Layanan antrean cetak mungkin perlu diperiksa dan dimulai ulang.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
-            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-b-3">
-            <div class="mapping-number">B03</div>
-            <div class="mapping-copy"><h3>Hasil cetak Epson bergaris atau kurang jelas</h3>
-            <p>Head printer mungkin memerlukan proses pembersihan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
-            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-b-4">
-            <div class="mapping-number">B04</div>
-            <div class="mapping-copy"><h3>Antrean CUPS menumpuk</h3>
-            <p>Spooler cetak memiliki pekerjaan yang gagal atau tertahan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
-            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-b-5">
-            <div class="mapping-number">B05</div>
-            <div class="mapping-copy"><h3>Pengguna tidak bisa mencetak saat pekerjaan mendesak</h3>
-            <p>Masalah antrean atau head printer menghambat proses cetak.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Printer Maintenance</div></div>
-            <a class="case-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-c-1">
-            <div class="mapping-number">C01</div>
-            <div class="mapping-copy"><h3>Teknisi tidak mengetahui alamat IP komputer pengguna</h3>
-            <p>Alamat IP target perlu ditemukan pada jaringan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
-            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-c-2">
-            <div class="mapping-number">C02</div>
-            <div class="mapping-copy"><h3>Sulit menemukan komputer tertentu di jaringan kantor</h3>
-            <p>Pemeriksaan satu per satu memerlukan waktu lama.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
-            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-c-3">
-            <div class="mapping-number">C03</div>
-            <div class="mapping-copy"><h3>Perlu mengetahui host yang sedang aktif</h3>
-            <p>Status host pada rentang jaringan perlu diperiksa.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
-            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-c-4">
-            <div class="mapping-number">C04</div>
-            <div class="mapping-copy"><h3>Nama host komputer tidak diketahui</h3>
-            <p>Informasi hostname membantu mengenali perangkat yang merespons.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
-            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-c-5">
-            <div class="mapping-number">C05</div>
-            <div class="mapping-copy"><h3>Pemeriksaan jaringan harus dilakukan pada beberapa alamat sekaligus</h3>
-            <p>Rentang IP perlu dipindai agar host aktif dapat ditemukan lebih cepat.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> IP Scanner</div></div>
-            <a class="case-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-d-1">
-            <div class="mapping-number">D01</div>
-            <div class="mapping-copy"><h3>Komputer client perlu di-restart dari jarak jauh</h3>
-            <p>Restart diperlukan tanpa mendatangi lokasi perangkat.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
-            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-d-2">
-            <div class="mapping-number">D02</div>
-            <div class="mapping-copy"><h3>Komputer perlu dimatikan setelah jam kerja</h3>
-            <p>Perangkat dapat dimatikan secara terencana melalui akses remote.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
-            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-d-3">
-            <div class="mapping-number">D03</div>
-            <div class="mapping-copy"><h3>Perangkat tidak berada dekat dengan teknisi</h3>
-            <p>Tindakan power jarak jauh dibutuhkan jika koneksi remote masih tersedia.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
-            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-d-4">
-            <div class="mapping-number">D04</div>
-            <div class="mapping-copy"><h3>Restart dibutuhkan setelah pemeliharaan</h3>
-            <p>Perangkat perlu memulai ulang agar proses pemeliharaan selesai.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
-            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-d-5">
-            <div class="mapping-number">D05</div>
-            <div class="mapping-copy"><h3>Teknisi perlu memilih tindakan shutdown atau restart dengan cepat</h3>
-            <p>Pilihan tindakan daya harus disesuaikan dengan kondisi komputer.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Shutdown / Restart</div></div>
-            <a class="case-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-e-1">
-            <div class="mapping-number">E01</div>
-            <div class="mapping-copy"><h3>Sistem terasa lambat karena cache menumpuk</h3>
-            <p>Cache sistem dan file sementara dapat memakan ruang.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
-            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-e-2">
-            <div class="mapping-number">E02</div>
-            <div class="mapping-copy"><h3>Ruang penyimpanan berkurang akibat file sementara</h3>
-            <p>File cache yang tidak diperlukan perlu dibersihkan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
-            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-e-3">
-            <div class="mapping-number">E03</div>
-            <div class="mapping-copy"><h3>Komputer terasa berat setelah digunakan lama</h3>
-            <p>Pembersihan cache dan optimasi dasar dapat membantu pemeliharaan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
-            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-e-4">
-            <div class="mapping-number">E04</div>
-            <div class="mapping-copy"><h3>Penggunaan disk perlu diringankan</h3>
-            <p>File sementara yang aman dibersihkan dapat mengurangi pemakaian ruang.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
-            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-e-5">
-            <div class="mapping-number">E05</div>
-            <div class="mapping-copy"><h3>Perawatan rutin komputer client memerlukan proses cepat</h3>
-            <p>Optimasi dasar dapat dijalankan secara remote.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Optimizer</div></div>
-            <a class="case-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-f-1">
-            <div class="mapping-number">F01</div>
-            <div class="mapping-copy"><h3>Komputer pengguna tidak dapat dijangkau melalui jaringan</h3>
-            <p>Ping membantu memeriksa respons alamat IP.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
-            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-f-2">
-            <div class="mapping-number">F02</div>
-            <div class="mapping-copy"><h3>Koneksi ke satu server terasa putus-putus</h3>
-            <p>Respons ping dapat digunakan untuk pengamatan konektivitas dasar.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
-            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-f-3">
-            <div class="mapping-number">F03</div>
-            <div class="mapping-copy"><h3>Teknisi perlu memeriksa banyak IP dalam satu rentang</h3>
-            <p>Pemantauan ping rentang IP membantu menguji respons host.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
-            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-f-4">
-            <div class="mapping-number">F04</div>
-            <div class="mapping-copy"><h3>Akses remote gagal dan status jaringan belum jelas</h3>
-            <p>Pemeriksaan ping membantu membedakan masalah konektivitas awal.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
-            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-f-5">
-            <div class="mapping-number">F05</div>
-            <div class="mapping-copy"><h3>Perlu mengetahui apakah alamat IP merespons</h3>
-            <p>Ping single IP memberi indikasi host dapat dijangkau.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Ping Monitor</div></div>
-            <a class="case-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-g-1">
-            <div class="mapping-number">G01</div>
-            <div class="mapping-copy"><h3>Thunderbird berjalan lambat</h3>
-            <p>Cache dan file sementara aplikasi email mungkin menumpuk.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
-            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-g-2">
-            <div class="mapping-number">G02</div>
-            <div class="mapping-copy"><h3>Thunderbird sering crash</h3>
-            <p>Data sementara atau kondisi profil perlu diperiksa saat troubleshooting.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
-            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-g-3">
-            <div class="mapping-number">G03</div>
-            <div class="mapping-copy"><h3>Aplikasi email terasa berat setelah lama digunakan</h3>
-            <p>Pembersihan data sementara dapat menjadi langkah pemeliharaan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
-            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-g-4">
-            <div class="mapping-number">G04</div>
-            <div class="mapping-copy"><h3>Folder cache Thunderbird membesar</h3>
-            <p>Cache aplikasi dapat dibersihkan melalui proses remote.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
-            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-g-5">
-            <div class="mapping-number">G05</div>
-            <div class="mapping-copy"><h3>Pengguna mengalami gangguan aplikasi email dan butuh pemeliharaan</h3>
-            <p>Pembersihan cache/temp dapat dicoba tanpa harus datang langsung.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Thunderbird Cleaner</div></div>
-            <a class="case-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-h-1">
-            <div class="mapping-number">H01</div>
-            <div class="mapping-copy"><h3>Flashdisk tidak terdeteksi pada port USB</h3>
-            <p>Kondisi perangkat dan port USB perlu diperiksa.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
-            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-h-2">
-            <div class="mapping-number">H02</div>
-            <div class="mapping-copy"><h3>Speaker komputer tidak mengeluarkan suara</h3>
-            <p>Perangkat audio dan konfigurasi terkait perlu didiagnosis.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
-            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-h-3">
-            <div class="mapping-number">H03</div>
-            <div class="mapping-copy"><h3>Mikrofon tidak terbaca saat rapat daring</h3>
-            <p>Input audio perlu diperiksa.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
-            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-h-4">
-            <div class="mapping-number">H04</div>
-            <div class="mapping-copy"><h3>Combo jack headset tidak berfungsi sebagaimana mestinya</h3>
-            <p>Port audio gabungan perlu diperiksa.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
-            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-h-5">
-            <div class="mapping-number">H05</div>
-            <div class="mapping-copy"><h3>Teknisi perlu mengumpulkan informasi kondisi USB dan audio</h3>
-            <p>Diagnostik membantu melihat informasi perangkat dan port terkait.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</div></div>
-            <a class="case-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-i-1">
-            <div class="mapping-number">I01</div>
-            <div class="mapping-copy"><h3>LibreOffice gagal dibuka dengan profil pengguna</h3>
-            <p>Konfigurasi profil dapat bermasalah dan perlu di-reset.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
-            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-i-2">
-            <div class="mapping-number">I02</div>
-            <div class="mapping-copy"><h3>WPS Office mengalami error setelah perubahan konfigurasi</h3>
-            <p>Profil aplikasi perlu dipulihkan ke kondisi awal.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
-            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-i-3">
-            <div class="mapping-number">I03</div>
-            <div class="mapping-copy"><h3>Dokumen office bermasalah akibat lock file</h3>
-            <p>File lock lama dapat menghambat pembukaan dokumen.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
-            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-i-4">
-            <div class="mapping-number">I04</div>
-            <div class="mapping-copy"><h3>Aplikasi office sering hang saat dijalankan</h3>
-            <p>Reset profil dapat menjadi langkah troubleshooting konfigurasi.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
-            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-i-5">
-            <div class="mapping-number">I05</div>
-            <div class="mapping-copy"><h3>Cache atau konfigurasi office perlu dibersihkan</h3>
-            <p>Profil LibreOffice/WPS dapat di-reset melalui menu pemeliharaan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</div></div>
-            <a class="case-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-j-1">
-            <div class="mapping-number">J01</div>
-            <div class="mapping-copy"><h3>Teknisi belum mengetahui spesifikasi komputer client</h3>
-            <p>Informasi sistem diperlukan untuk analisis awal.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
-            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-j-2">
-            <div class="mapping-number">J02</div>
-            <div class="mapping-copy"><h3>Perlu mengetahui versi sistem operasi yang digunakan</h3>
-            <p>Data sistem membantu menentukan langkah troubleshooting.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
-            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-j-3">
-            <div class="mapping-number">J03</div>
-            <div class="mapping-copy"><h3>Perlu memeriksa informasi CPU dan RAM</h3>
-            <p>Audit hardware memberi gambaran spesifikasi perangkat.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
-            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-j-4">
-            <div class="mapping-number">J04</div>
-            <div class="mapping-copy"><h3>Perlu mengumpulkan laporan kondisi perangkat dari jarak jauh</h3>
-            <p>Informasi sistem dapat dikirimkan tanpa pemeriksaan fisik awal.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
-            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-j-5">
-            <div class="mapping-number">J05</div>
-            <div class="mapping-copy"><h3>Tim IT membutuhkan inventaris perangkat untuk troubleshooting</h3>
-            <p>Laporan hardware membantu mencatat detail perangkat client.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</div></div>
-            <a class="case-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-k-1">
-            <div class="mapping-number">K01</div>
-            <div class="mapping-copy"><h3>Wi-Fi sering terputus sendiri</h3>
-            <p>Pengaturan power management dapat memengaruhi kestabilan adaptor.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
-            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-k-2">
-            <div class="mapping-number">K02</div>
-            <div class="mapping-copy"><h3>Koneksi Wi-Fi terputus setelah komputer idle</h3>
-            <p>Pengaturan hemat daya adaptor perlu diperiksa.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
-            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-k-3">
-            <div class="mapping-number">K03</div>
-            <div class="mapping-copy"><h3>Wi-Fi tidak stabil pada laptop Ubuntu</h3>
-            <p>Perbaikan power management tersedia untuk lingkungan Ubuntu yang didukung script.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
-            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-k-4">
-            <div class="mapping-number">K04</div>
-            <div class="mapping-copy"><h3>Koneksi nirkabel bermasalah meski sinyal tersedia</h3>
-            <p>Pengaturan adaptor dapat menjadi salah satu faktor yang diperiksa.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
-            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-k-5">
-            <div class="mapping-number">K05</div>
-            <div class="mapping-copy"><h3>Teknisi perlu menstabilkan Wi-Fi client dari jarak jauh</h3>
-            <p>Menu perbaikan power management dapat dijalankan pada target.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Fix WiFi Power Management</div></div>
-            <a class="case-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-l-1">
-            <div class="mapping-number">L01</div>
-            <div class="mapping-copy"><h3>Pengelompokan komputer berdasarkan divisi dan nama user belum seragam</h3>
-            <p>Gunakan pola hostname yang disepakati untuk membantu mengenali divisi dan pengguna pada nama perangkat.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Update Hostname — mengubah hostname komputer client dari jarak jauh tanpa SSH manual dari komputer teknisi.</div></div>
-            <a class="case-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-l-2">
-            <div class="mapping-number">L02</div>
-            <div class="mapping-copy"><h3>Identifikasi aset dan inventaris komputer membutuhkan waktu</h3>
-            <p>Hostname yang konsisten dapat menjadi identitas perangkat yang membantu pencatatan dan penelusuran inventaris.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Update Hostname — memperbarui identitas hostname dari jarak jauh untuk mendukung inventaris yang lebih terstruktur.</div></div>
-            <a class="case-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
-<article class="mapping-card fade-in" id="map-l-3">
-            <div class="mapping-number">L03</div>
-            <div class="mapping-copy"><h3>Penamaan perangkat perlu mengikuti standar IT TS SPIL</h3>
-            <p>Pola hostname yang seragam membantu tim IT membedakan perangkat dan mengurangi risiko salah identifikasi maupun penamaan yang saling bertabrakan.</p>
-            <div class="problem-solution"><strong>Fitur terkait:</strong> Update Hostname — mendukung penerapan standar penamaan perangkat. Pencegahan konflik IP tetap memerlukan perencanaan alamat IP/DNS yang terpisah.</div></div>
-            <a class="case-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a>
-        </article>
+    
+    <div class="mapping-table-wrap fade-in" role="region" aria-label="Tabel pemetaan kasus dan fitur" tabindex="0">
+      <table class="mapping-table">
+        <thead><tr>
+          <th scope="col">Kode</th>
+          <th scope="col">Kasus / Kendala</th>
+          <th scope="col">Deskripsi</th>
+          <th scope="col">Fitur Terkait</th>
+          <th scope="col">Aksi</th>
+        </tr></thead>
+        <tbody><tr id="map-a-1">
+          <td class="mapping-table-number">A01</td>
+          <td class="mapping-table-case"><strong>Firefox terasa lambat saat membuka banyak tab</strong></td>
+          <td>Cache browser menumpuk dan halaman terasa lambat saat digunakan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Clear Browser</td>
+          <td><a class="case-link mapping-table-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-a-2">
+          <td class="mapping-table-number">A02</td>
+          <td class="mapping-table-case"><strong>Chrome sering menampilkan halaman lama</strong></td>
+          <td>Cache lokal dapat membuat tampilan situs belum diperbarui.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Clear Browser</td>
+          <td><a class="case-link mapping-table-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-a-3">
+          <td class="mapping-table-number">A03</td>
+          <td class="mapping-table-case"><strong>Browser sering bermasalah setelah pemakaian lama</strong></td>
+          <td>Data sementara dan sesi lama dapat mengganggu penggunaan browser.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Clear Browser</td>
+          <td><a class="case-link mapping-table-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-a-4">
+          <td class="mapping-table-number">A04</td>
+          <td class="mapping-table-case"><strong>Riwayat browsing perlu dibersihkan dari komputer client</strong></td>
+          <td>Riwayat kunjungan dan data formulir masih tersimpan di profil browser.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Clear Browser</td>
+          <td><a class="case-link mapping-table-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-a-5">
+          <td class="mapping-table-number">A05</td>
+          <td class="mapping-table-case"><strong>Pembersihan browser harus dilakukan tanpa menghapus bookmark</strong></td>
+          <td>Dibutuhkan pembersihan data sementara dengan tetap mempertahankan bookmark dan password tersimpan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Clear Browser</td>
+          <td><a class="case-link mapping-table-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-a-6">
+          <td class="mapping-table-number">A06</td>
+          <td class="mapping-table-case"><strong>Website masih menggunakan informasi DNS lama</strong></td>
+          <td>Setelah perubahan DNS, komputer client masih menyimpan cache DNS sehingga website dapat mengarah ke alamat yang lama.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Clear Browser — Flush DNS sistem menggunakan <code>resolvectl flush-caches</code> atau restart <code>systemd-resolved</code>.</td>
+          <td><a class="case-link mapping-table-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-a-7">
+          <td class="mapping-table-number">A07</td>
+          <td class="mapping-table-case"><strong>Website tidak dapat diakses setelah perubahan DNS</strong></td>
+          <td>Cache DNS sistem yang belum diperbarui dapat menghambat browser mengakses alamat website yang benar.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Clear Browser — Flush DNS sistem menggunakan <code>resolvectl flush-caches</code> atau restart <code>systemd-resolved</code>.</td>
+          <td><a class="case-link mapping-table-link" href="#feature-a">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-b-1">
+          <td class="mapping-table-number">B01</td>
+          <td class="mapping-table-case"><strong>Dokumen tertahan di antrean printer</strong></td>
+          <td>Print job tidak selesai dan dokumen berikutnya ikut tertahan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Printer Maintenance</td>
+          <td><a class="case-link mapping-table-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-b-2">
+          <td class="mapping-table-number">B02</td>
+          <td class="mapping-table-case"><strong>Printer tidak merespons perintah cetak</strong></td>
+          <td>Layanan antrean cetak mungkin perlu diperiksa dan dimulai ulang.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Printer Maintenance</td>
+          <td><a class="case-link mapping-table-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-b-3">
+          <td class="mapping-table-number">B03</td>
+          <td class="mapping-table-case"><strong>Hasil cetak Epson bergaris atau kurang jelas</strong></td>
+          <td>Head printer mungkin memerlukan proses pembersihan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Printer Maintenance</td>
+          <td><a class="case-link mapping-table-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-b-4">
+          <td class="mapping-table-number">B04</td>
+          <td class="mapping-table-case"><strong>Antrean CUPS menumpuk</strong></td>
+          <td>Spooler cetak memiliki pekerjaan yang gagal atau tertahan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Printer Maintenance</td>
+          <td><a class="case-link mapping-table-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-b-5">
+          <td class="mapping-table-number">B05</td>
+          <td class="mapping-table-case"><strong>Pengguna tidak bisa mencetak saat pekerjaan mendesak</strong></td>
+          <td>Masalah antrean atau head printer menghambat proses cetak.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Printer Maintenance</td>
+          <td><a class="case-link mapping-table-link" href="#feature-b">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-c-1">
+          <td class="mapping-table-number">C01</td>
+          <td class="mapping-table-case"><strong>Teknisi tidak mengetahui alamat IP komputer pengguna</strong></td>
+          <td>Alamat IP target perlu ditemukan pada jaringan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> IP Scanner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-c-2">
+          <td class="mapping-table-number">C02</td>
+          <td class="mapping-table-case"><strong>Sulit menemukan komputer tertentu di jaringan kantor</strong></td>
+          <td>Pemeriksaan satu per satu memerlukan waktu lama.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> IP Scanner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-c-3">
+          <td class="mapping-table-number">C03</td>
+          <td class="mapping-table-case"><strong>Perlu mengetahui host yang sedang aktif</strong></td>
+          <td>Status host pada rentang jaringan perlu diperiksa.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> IP Scanner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-c-4">
+          <td class="mapping-table-number">C04</td>
+          <td class="mapping-table-case"><strong>Nama host komputer tidak diketahui</strong></td>
+          <td>Informasi hostname membantu mengenali perangkat yang merespons.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> IP Scanner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-c-5">
+          <td class="mapping-table-number">C05</td>
+          <td class="mapping-table-case"><strong>Pemeriksaan jaringan harus dilakukan pada beberapa alamat sekaligus</strong></td>
+          <td>Rentang IP perlu dipindai agar host aktif dapat ditemukan lebih cepat.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> IP Scanner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-c">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-d-1">
+          <td class="mapping-table-number">D01</td>
+          <td class="mapping-table-case"><strong>Komputer client perlu di-restart dari jarak jauh</strong></td>
+          <td>Restart diperlukan tanpa mendatangi lokasi perangkat.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Shutdown / Restart</td>
+          <td><a class="case-link mapping-table-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-d-2">
+          <td class="mapping-table-number">D02</td>
+          <td class="mapping-table-case"><strong>Komputer perlu dimatikan setelah jam kerja</strong></td>
+          <td>Perangkat dapat dimatikan secara terencana melalui akses remote.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Shutdown / Restart</td>
+          <td><a class="case-link mapping-table-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-d-3">
+          <td class="mapping-table-number">D03</td>
+          <td class="mapping-table-case"><strong>Perangkat tidak berada dekat dengan teknisi</strong></td>
+          <td>Tindakan power jarak jauh dibutuhkan jika koneksi remote masih tersedia.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Shutdown / Restart</td>
+          <td><a class="case-link mapping-table-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-d-4">
+          <td class="mapping-table-number">D04</td>
+          <td class="mapping-table-case"><strong>Restart dibutuhkan setelah pemeliharaan</strong></td>
+          <td>Perangkat perlu memulai ulang agar proses pemeliharaan selesai.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Shutdown / Restart</td>
+          <td><a class="case-link mapping-table-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-d-5">
+          <td class="mapping-table-number">D05</td>
+          <td class="mapping-table-case"><strong>Teknisi perlu memilih tindakan shutdown atau restart dengan cepat</strong></td>
+          <td>Pilihan tindakan daya harus disesuaikan dengan kondisi komputer.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Shutdown / Restart</td>
+          <td><a class="case-link mapping-table-link" href="#feature-d">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-e-1">
+          <td class="mapping-table-number">E01</td>
+          <td class="mapping-table-case"><strong>Sistem terasa lambat karena cache menumpuk</strong></td>
+          <td>Cache sistem dan file sementara dapat memakan ruang.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Optimizer</td>
+          <td><a class="case-link mapping-table-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-e-2">
+          <td class="mapping-table-number">E02</td>
+          <td class="mapping-table-case"><strong>Ruang penyimpanan berkurang akibat file sementara</strong></td>
+          <td>File cache yang tidak diperlukan perlu dibersihkan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Optimizer</td>
+          <td><a class="case-link mapping-table-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-e-3">
+          <td class="mapping-table-number">E03</td>
+          <td class="mapping-table-case"><strong>Komputer terasa berat setelah digunakan lama</strong></td>
+          <td>Pembersihan cache dan optimasi dasar dapat membantu pemeliharaan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Optimizer</td>
+          <td><a class="case-link mapping-table-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-e-4">
+          <td class="mapping-table-number">E04</td>
+          <td class="mapping-table-case"><strong>Penggunaan disk perlu diringankan</strong></td>
+          <td>File sementara yang aman dibersihkan dapat mengurangi pemakaian ruang.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Optimizer</td>
+          <td><a class="case-link mapping-table-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-e-5">
+          <td class="mapping-table-number">E05</td>
+          <td class="mapping-table-case"><strong>Perawatan rutin komputer client memerlukan proses cepat</strong></td>
+          <td>Optimasi dasar dapat dijalankan secara remote.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Optimizer</td>
+          <td><a class="case-link mapping-table-link" href="#feature-e">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-f-1">
+          <td class="mapping-table-number">F01</td>
+          <td class="mapping-table-case"><strong>Komputer pengguna tidak dapat dijangkau melalui jaringan</strong></td>
+          <td>Ping membantu memeriksa respons alamat IP.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Ping Monitor</td>
+          <td><a class="case-link mapping-table-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-f-2">
+          <td class="mapping-table-number">F02</td>
+          <td class="mapping-table-case"><strong>Koneksi ke satu server terasa putus-putus</strong></td>
+          <td>Respons ping dapat digunakan untuk pengamatan konektivitas dasar.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Ping Monitor</td>
+          <td><a class="case-link mapping-table-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-f-3">
+          <td class="mapping-table-number">F03</td>
+          <td class="mapping-table-case"><strong>Teknisi perlu memeriksa banyak IP dalam satu rentang</strong></td>
+          <td>Pemantauan ping rentang IP membantu menguji respons host.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Ping Monitor</td>
+          <td><a class="case-link mapping-table-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-f-4">
+          <td class="mapping-table-number">F04</td>
+          <td class="mapping-table-case"><strong>Akses remote gagal dan status jaringan belum jelas</strong></td>
+          <td>Pemeriksaan ping membantu membedakan masalah konektivitas awal.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Ping Monitor</td>
+          <td><a class="case-link mapping-table-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-f-5">
+          <td class="mapping-table-number">F05</td>
+          <td class="mapping-table-case"><strong>Perlu mengetahui apakah alamat IP merespons</strong></td>
+          <td>Ping single IP memberi indikasi host dapat dijangkau.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Ping Monitor</td>
+          <td><a class="case-link mapping-table-link" href="#feature-f">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-g-1">
+          <td class="mapping-table-number">G01</td>
+          <td class="mapping-table-case"><strong>Thunderbird berjalan lambat</strong></td>
+          <td>Cache dan file sementara aplikasi email mungkin menumpuk.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Thunderbird Cleaner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-g-2">
+          <td class="mapping-table-number">G02</td>
+          <td class="mapping-table-case"><strong>Thunderbird sering crash</strong></td>
+          <td>Data sementara atau kondisi profil perlu diperiksa saat troubleshooting.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Thunderbird Cleaner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-g-3">
+          <td class="mapping-table-number">G03</td>
+          <td class="mapping-table-case"><strong>Aplikasi email terasa berat setelah lama digunakan</strong></td>
+          <td>Pembersihan data sementara dapat menjadi langkah pemeliharaan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Thunderbird Cleaner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-g-4">
+          <td class="mapping-table-number">G04</td>
+          <td class="mapping-table-case"><strong>Folder cache Thunderbird membesar</strong></td>
+          <td>Cache aplikasi dapat dibersihkan melalui proses remote.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Thunderbird Cleaner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-g-5">
+          <td class="mapping-table-number">G05</td>
+          <td class="mapping-table-case"><strong>Pengguna mengalami gangguan aplikasi email dan butuh pemeliharaan</strong></td>
+          <td>Pembersihan cache/temp dapat dicoba tanpa harus datang langsung.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Thunderbird Cleaner</td>
+          <td><a class="case-link mapping-table-link" href="#feature-g">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-h-1">
+          <td class="mapping-table-number">H01</td>
+          <td class="mapping-table-case"><strong>Flashdisk tidak terdeteksi pada port USB</strong></td>
+          <td>Kondisi perangkat dan port USB perlu diperiksa.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</td>
+          <td><a class="case-link mapping-table-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-h-2">
+          <td class="mapping-table-number">H02</td>
+          <td class="mapping-table-case"><strong>Speaker komputer tidak mengeluarkan suara</strong></td>
+          <td>Perangkat audio dan konfigurasi terkait perlu didiagnosis.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</td>
+          <td><a class="case-link mapping-table-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-h-3">
+          <td class="mapping-table-number">H03</td>
+          <td class="mapping-table-case"><strong>Mikrofon tidak terbaca saat rapat daring</strong></td>
+          <td>Input audio perlu diperiksa.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</td>
+          <td><a class="case-link mapping-table-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-h-4">
+          <td class="mapping-table-number">H04</td>
+          <td class="mapping-table-case"><strong>Combo jack headset tidak berfungsi sebagaimana mestinya</strong></td>
+          <td>Port audio gabungan perlu diperiksa.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</td>
+          <td><a class="case-link mapping-table-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-h-5">
+          <td class="mapping-table-number">H05</td>
+          <td class="mapping-table-case"><strong>Teknisi perlu mengumpulkan informasi kondisi USB dan audio</strong></td>
+          <td>Diagnostik membantu melihat informasi perangkat dan port terkait.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Diagnostik USB &amp; Audio</td>
+          <td><a class="case-link mapping-table-link" href="#feature-h">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-i-1">
+          <td class="mapping-table-number">I01</td>
+          <td class="mapping-table-case"><strong>LibreOffice gagal dibuka dengan profil pengguna</strong></td>
+          <td>Konfigurasi profil dapat bermasalah dan perlu di-reset.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</td>
+          <td><a class="case-link mapping-table-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-i-2">
+          <td class="mapping-table-number">I02</td>
+          <td class="mapping-table-case"><strong>WPS Office mengalami error setelah perubahan konfigurasi</strong></td>
+          <td>Profil aplikasi perlu dipulihkan ke kondisi awal.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</td>
+          <td><a class="case-link mapping-table-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-i-3">
+          <td class="mapping-table-number">I03</td>
+          <td class="mapping-table-case"><strong>Dokumen office bermasalah akibat lock file</strong></td>
+          <td>File lock lama dapat menghambat pembukaan dokumen.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</td>
+          <td><a class="case-link mapping-table-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-i-4">
+          <td class="mapping-table-number">I04</td>
+          <td class="mapping-table-case"><strong>Aplikasi office sering hang saat dijalankan</strong></td>
+          <td>Reset profil dapat menjadi langkah troubleshooting konfigurasi.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</td>
+          <td><a class="case-link mapping-table-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-i-5">
+          <td class="mapping-table-number">I05</td>
+          <td class="mapping-table-case"><strong>Cache atau konfigurasi office perlu dibersihkan</strong></td>
+          <td>Profil LibreOffice/WPS dapat di-reset melalui menu pemeliharaan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Reset Profile LibreOffice &amp; WPS</td>
+          <td><a class="case-link mapping-table-link" href="#feature-i">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-j-1">
+          <td class="mapping-table-number">J01</td>
+          <td class="mapping-table-case"><strong>Teknisi belum mengetahui spesifikasi komputer client</strong></td>
+          <td>Informasi sistem diperlukan untuk analisis awal.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</td>
+          <td><a class="case-link mapping-table-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-j-2">
+          <td class="mapping-table-number">J02</td>
+          <td class="mapping-table-case"><strong>Perlu mengetahui versi sistem operasi yang digunakan</strong></td>
+          <td>Data sistem membantu menentukan langkah troubleshooting.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</td>
+          <td><a class="case-link mapping-table-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-j-3">
+          <td class="mapping-table-number">J03</td>
+          <td class="mapping-table-case"><strong>Perlu memeriksa informasi CPU dan RAM</strong></td>
+          <td>Audit hardware memberi gambaran spesifikasi perangkat.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</td>
+          <td><a class="case-link mapping-table-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-j-4">
+          <td class="mapping-table-number">J04</td>
+          <td class="mapping-table-case"><strong>Perlu mengumpulkan laporan kondisi perangkat dari jarak jauh</strong></td>
+          <td>Informasi sistem dapat dikirimkan tanpa pemeriksaan fisik awal.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</td>
+          <td><a class="case-link mapping-table-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-j-5">
+          <td class="mapping-table-number">J05</td>
+          <td class="mapping-table-case"><strong>Tim IT membutuhkan inventaris perangkat untuk troubleshooting</strong></td>
+          <td>Laporan hardware membantu mencatat detail perangkat client.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> System Info &amp; Hardware Audit</td>
+          <td><a class="case-link mapping-table-link" href="#feature-j">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-k-1">
+          <td class="mapping-table-number">K01</td>
+          <td class="mapping-table-case"><strong>Wi-Fi sering terputus sendiri</strong></td>
+          <td>Pengaturan power management dapat memengaruhi kestabilan adaptor.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Fix WiFi Power Management</td>
+          <td><a class="case-link mapping-table-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-k-2">
+          <td class="mapping-table-number">K02</td>
+          <td class="mapping-table-case"><strong>Koneksi Wi-Fi terputus setelah komputer idle</strong></td>
+          <td>Pengaturan hemat daya adaptor perlu diperiksa.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Fix WiFi Power Management</td>
+          <td><a class="case-link mapping-table-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-k-3">
+          <td class="mapping-table-number">K03</td>
+          <td class="mapping-table-case"><strong>Wi-Fi tidak stabil pada laptop Ubuntu</strong></td>
+          <td>Perbaikan power management tersedia untuk lingkungan Ubuntu yang didukung script.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Fix WiFi Power Management</td>
+          <td><a class="case-link mapping-table-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-k-4">
+          <td class="mapping-table-number">K04</td>
+          <td class="mapping-table-case"><strong>Koneksi nirkabel bermasalah meski sinyal tersedia</strong></td>
+          <td>Pengaturan adaptor dapat menjadi salah satu faktor yang diperiksa.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Fix WiFi Power Management</td>
+          <td><a class="case-link mapping-table-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-k-5">
+          <td class="mapping-table-number">K05</td>
+          <td class="mapping-table-case"><strong>Teknisi perlu menstabilkan Wi-Fi client dari jarak jauh</strong></td>
+          <td>Menu perbaikan power management dapat dijalankan pada target.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Fix WiFi Power Management</td>
+          <td><a class="case-link mapping-table-link" href="#feature-k">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-l-1">
+          <td class="mapping-table-number">L01</td>
+          <td class="mapping-table-case"><strong>Pengelompokan komputer berdasarkan divisi dan nama user belum seragam</strong></td>
+          <td>Gunakan pola hostname yang disepakati untuk membantu mengenali divisi dan pengguna pada nama perangkat.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Update Hostname — mengubah hostname komputer client dari jarak jauh tanpa SSH manual dari komputer teknisi.</td>
+          <td><a class="case-link mapping-table-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-l-2">
+          <td class="mapping-table-number">L02</td>
+          <td class="mapping-table-case"><strong>Identifikasi aset dan inventaris komputer membutuhkan waktu</strong></td>
+          <td>Hostname yang konsisten dapat menjadi identitas perangkat yang membantu pencatatan dan penelusuran inventaris.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Update Hostname — memperbarui identitas hostname dari jarak jauh untuk mendukung inventaris yang lebih terstruktur.</td>
+          <td><a class="case-link mapping-table-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr><tr id="map-l-3">
+          <td class="mapping-table-number">L03</td>
+          <td class="mapping-table-case"><strong>Penamaan perangkat perlu mengikuti standar IT TS SPIL</strong></td>
+          <td>Pola hostname yang seragam membantu tim IT membedakan perangkat dan mengurangi risiko salah identifikasi maupun penamaan yang saling bertabrakan.</td>
+          <td class="mapping-table-feature"><strong>Fitur terkait:</strong> Update Hostname — mendukung penerapan standar penamaan perangkat. Pencegahan konflik IP tetap memerlukan perencanaan alamat IP/DNS yang terpisah.</td>
+          <td><a class="case-link mapping-table-link" href="#feature-l">Buka detail fitur <span aria-hidden="true">→</span></a></td>
+        </tr></tbody>
+      </table>
     </div>
 </section>
 <section id="features">
