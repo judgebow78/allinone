@@ -922,6 +922,22 @@
   .mapping-table th,.mapping-table td{padding:.8rem .75rem;font-size:.8rem}
 }
 
+
+/* FIX: tabel Pemetaan harus langsung terlihat; jangan menunggu animasi fade-in */
+.mapping-table-wrap {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+.mapping-table-wrap table,
+.mapping-table-wrap thead,
+.mapping-table-wrap tbody,
+.mapping-table-wrap tr,
+.mapping-table-wrap th,
+.mapping-table-wrap td {
+    visibility: visible;
+}
+
 </style>
 </head>
 <body>
@@ -1374,7 +1390,7 @@
         <p>Setelah mengenali kasus, lihat fitur pada script yang berkaitan dengan setiap masalah.</p>
     </div>
     
-    <div class="mapping-table-wrap fade-in" role="region" aria-label="Tabel pemetaan kasus dan fitur" tabindex="0">
+    <div class="mapping-table-wrap" role="region" aria-label="Tabel pemetaan kasus dan fitur" tabindex="0">
       <table class="mapping-table">
         <thead><tr>
           <th scope="col">Kode</th>
